@@ -15,6 +15,7 @@
 #include "uiInteract.h" // for INTERFACE
 #include "uiDraw.h"     // for RANDOM and DRAW*
 #include "position.h"      // for POINT
+#include "physics.h"
 using namespace std;
 
 /*************************************************************************
@@ -48,9 +49,9 @@ public:
       //ptStar.setPixelsX(ptUpperRight.getPixelsX() * random(-0.5, 0.5));
       //ptStar.setPixelsY(ptUpperRight.getPixelsY() * random(-0.5, 0.5));
 
-      angleShip = 0.0;
+      //angleShip = 0.0;
       angleEarth = 0.0;
-      phaseStar = 0;
+      //phaseStar = 0;
    }
 
    Position ptHubble;
@@ -101,9 +102,10 @@ void callBack(const Interface* pUI, void* p)
    //
 
    // rotate the earth
-   pDemo->angleEarth -= 0.01;
-   pDemo->angleShip += 0.02;
-   pDemo->phaseStar++;
+   auto earthRotationSpeed = getEarthRotationSpeed();
+   pDemo->angleEarth += earthRotationSpeed;
+   //pDemo->angleShip += 0.02;
+   //pDemo->phaseStar++;
 
    //
    // draw everything
