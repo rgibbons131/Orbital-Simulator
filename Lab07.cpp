@@ -43,13 +43,13 @@ public:
       //ptShip.setPixelsX(ptUpperRight.getPixelsX() * random(-0.5, 0.5));
       //ptShip.setPixelsY(ptUpperRight.getPixelsY() * random(-0.5, 0.5));
 
-      ptGPS.setPixelsX(ptUpperRight.getPixelsX() * random(-0.5, 0.5));
-      ptGPS.setPixelsY(ptUpperRight.getPixelsY() * random(-0.5, 0.5));
+      ptGPS.setMetersX(0.0);
+      ptGPS.setMetersY(42164000.0);
 
       //ptStar.setPixelsX(ptUpperRight.getPixelsX() * random(-0.5, 0.5));
       //ptStar.setPixelsY(ptUpperRight.getPixelsY() * random(-0.5, 0.5));
 
-      //angleShip = 0.0;
+      angleShip = 0.0;
       angleEarth = 0.0;
       //phaseStar = 0;
    }
@@ -106,6 +106,10 @@ void callBack(const Interface* pUI, void* p)
    pDemo->angleEarth += earthRotationSpeed;
    //pDemo->angleShip += 0.02;
    //pDemo->phaseStar++;
+
+   // Move the GPS
+   // Starting velocity (x and y) = -3100.0 , 0.0
+   // Need to track and increment velocity, position, and accelertation
 
    //
    // draw everything
