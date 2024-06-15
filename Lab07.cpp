@@ -52,8 +52,14 @@ public:
       angleShip = 0.0;
       angleEarth = 0.0;
       //phaseStar = 0;
-   }
 
+
+      // Initial velocity
+      velocityX = -3100.0;
+      velocityY = 0.0;
+   }
+   float velocityX;
+   float velocityY;
    Position ptHubble;
    Position ptSputnik;
    Position ptStarlink;
@@ -107,9 +113,36 @@ void callBack(const Interface* pUI, void* p)
    //pDemo->angleShip += 0.02;
    //pDemo->phaseStar++;
 
+
+
+
    // Move the GPS
    // Starting velocity (x and y) = -3100.0 , 0.0
    // Need to track and increment velocity, position, and accelertation
+
+   // Calculate height above Earth
+   float height = getHeightAboveEarth(pDemo->ptGPS.getMetersX(), pDemo->ptGPS.getMetersY());
+
+   // Calculate gravitational acceleration
+   float gravity = getGravity(height);
+   float gravityDirection = getDirectionOfGravityPull(pDemo->ptGPS.getMetersX(), pDemo->ptGPS.getMetersY());
+   float accelX = getHorizontalAccel(gravityDirection, gravity);
+   float accelY = getVerticalAccel(gravityDirection, gravity);
+
+   // Update velocity
+   pDemo->velocityX += accelX * TPF;
+   pDemo->velocityY += accelY * TPF;
+
+   // Update position
+   float newX = pDemo->ptGPS.getMetersX() + pDemo->velocityX * TPF;
+   float newY = pDemo->ptGPS.getMetersY() + pDemo->velocityY * TPF;
+
+   pDemo->ptGPS.setMetersX(newX);
+   pDemo->ptGPS.setMetersY(newY);
+
+
+
+
 
    //
    // draw everything
@@ -118,6 +151,10 @@ void callBack(const Interface* pUI, void* p)
    Position pt;
    ogstream gout(pt);
 
+
+   // draw the earth
+   pt.setMeters(0.0, 0.0);
+   gout.drawEarth(pt, pDemo->angleEarth);
    // draw satellites
    //gout.drawCrewDragon(pDemo->ptCrewDragon, pDemo->angleShip);
    //gout.drawHubble    (pDemo->ptHubble,     pDemo->angleShip);
@@ -151,9 +188,7 @@ void callBack(const Interface* pUI, void* p)
    //// draw a single star
    //gout.drawStar(pDemo->ptStar, pDemo->phaseStar);
 
-   // draw the earth
-   pt.setMeters(0.0, 0.0);
-   gout.drawEarth(pt, pDemo->angleEarth);
+
 }
 
 double Position::metersFromPixels = 40.0;

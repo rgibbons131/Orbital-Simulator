@@ -20,12 +20,12 @@ const float GRAVITY = 9.80665;
 
 float getGravity(float height) 
 {
-   return GRAVITY * (EARTH_RADIUS / (EARTH_RADIUS / height)) * (EARTH_RADIUS / (EARTH_RADIUS / height));
+   return GRAVITY * pow(EARTH_RADIUS / (EARTH_RADIUS + height),2);
 }
 
 float getHeightAboveEarth(float x, float y)
 {
-   return sqrt(x * x + y * y) - EARTH_RADIUS;
+   return sqrt(pow(x,2) + pow(y,2)) - EARTH_RADIUS;
 }
 
 float getDirectionOfGravityPull(float x, float y)
