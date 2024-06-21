@@ -13,6 +13,7 @@
 #include <iostream>
 #include "position.h"
 #include <cassert>
+#include "unitTest.h"
 
 using namespace std;
 
@@ -20,7 +21,7 @@ using namespace std;
  * TEST Position
  * A friend class for Position which contains the Position unit tests
  ********************************/
-class TestPosition
+class TestPosition : public UnitTest
 {
 public:
    void run()
@@ -36,35 +37,31 @@ public:
       
       addPixels();
       addMeters();
+      report("Position");
    }
    
 private:
    // utility funciton because floating point numbers are approximations
-   bool closeEnough(double value, double test, double tolerence) const
-   {
-      double difference = value - test;
-      return (difference >= -tolerence) && (difference <= tolerence);
-   }
 
-   void defaultConstructor() const
+   void defaultConstructor()
    {  // setup
       // exercise
       Position pos;
       // verify
-      assert(pos.x == 0.0);
-      assert(pos.y == 0.0);
+      assertUnit(pos.x == 0.0);
+      assertUnit(pos.y == 0.0);
    }  // teardown
 
-   void nonDefaultConstructor() const
+   void nonDefaultConstructor()
    {  // setup
       // exercise
       Position pos(3000.0, 9000.0);
       // verify
-      assert(pos.x == 3000.0);
-      assert(pos.y == 9000.0);
+      assertUnit(pos.x == 3000.0);
+      assertUnit(pos.y == 9000.0);
    }  // teardown
 
-   void copyConstructor() const
+   void copyConstructor()
    {  // setup
       Position pos1;
       pos1.x = 4000.0;
@@ -72,13 +69,13 @@ private:
       // exercise
       Position pos2(pos1);
       // verify
-      assert(pos1.x == 4000.0);
-      assert(pos1.y == 2000.0);
-      assert(pos2.x == 4000.0);
-      assert(pos2.y == 2000.0);
+      assertUnit(pos1.x == 4000.0);
+      assertUnit(pos1.y == 2000.0);
+      assertUnit(pos2.x == 4000.0);
+      assertUnit(pos2.y == 2000.0);
    }  // teardown
 
-   void assignment() const
+   void assignment()
    {  // setup
       Position pos1;
       pos1.x = 4000.0;
@@ -86,13 +83,13 @@ private:
       // exercise
       Position pos2 = pos1;
       // verify
-      assert(pos1.x == 4000.0);
-      assert(pos1.y == 2000.0);
-      assert(pos2.x == 4000.0);
-      assert(pos2.y == 2000.0);
+      assertUnit(pos1.x == 4000.0);
+      assertUnit(pos1.y == 2000.0);
+      assertUnit(pos2.x == 4000.0);
+      assertUnit(pos2.y == 2000.0);
    }  // teardown
    
-   void setMeters() const
+   void setMeters()
    {  // setup
       Position pos;
       pos.x = 0.0;
@@ -101,11 +98,11 @@ private:
       pos.setMetersX(5000.0);
       pos.setMetersY(3000.0);
       // verify
-      assert(pos.x == 5000.0);
-      assert(pos.y == 3000.0);
+      assertUnit(pos.x == 5000.0);
+      assertUnit(pos.y == 3000.0);
    }  // teardown
  
-   void setPixels() const
+   void setPixels()
    {  // setup
       Position pos;
       pos.x = 0.0;
@@ -114,11 +111,11 @@ private:
       pos.setPixelsX(6.0);
       pos.setPixelsY(12.0);
       // verify
-      assert(pos.x == 6000.0);
-      assert(pos.y == 12000.0);
+      assertUnit(pos.x == 6000.0);
+      assertUnit(pos.y == 12000.0);
    }  // teardown
    
-   void addMeters() const
+   void addMeters()
    {  // setup
       Position pos;
       pos.x = 800.0;
@@ -127,11 +124,11 @@ private:
       pos.addMetersX(-400.0);
       pos.addMetersY(800.0);
       // verify
-      assert(pos.x == 400.0);
-      assert(pos.y == 2400.0);
+      assertUnit(pos.x == 400.0);
+      assertUnit(pos.y == 2400.0);
    }  // teardown
    
-   void addPixels() const
+   void addPixels()
    {  // setup
       Position pos;
       pos.x = 2000.0;
@@ -140,8 +137,8 @@ private:
       pos.addPixelsX(2);
       pos.addPixelsY(3);
       // verify
-      assert(pos.x == 4000.0);
-      assert(pos.y == 7000.0);
+      assertUnit(pos.x == 4000.0);
+      assertUnit(pos.y == 7000.0);
    }  // teardown
 
 };
