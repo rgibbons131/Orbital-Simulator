@@ -19,7 +19,7 @@ public:
    Entity(Entity& rhs);
    Position getPosition() const { return position; }
    Velocity getVelocity() const { return velocity; }
-   float    getAngle()    const { return angle;    }
+   Direction    getAngle()    const { return angle;    }
 
    void setPosition(Position& pos) { position = pos; }
    void setVelocity(Velocity& vel) { velocity = vel; }
