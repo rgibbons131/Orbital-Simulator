@@ -305,7 +305,7 @@ private:
       //SETUP
       Entity ent;
       //EXERCISE
-      ent.setAngle(2 * PI);
+      ent.setAngle(2.0 * M_PI);
       //VERIFY
       assertUnit(ent.angle == 0.0);
       //TEARDOWN

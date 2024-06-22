@@ -1,6 +1,6 @@
 #pragma once
-#include "constants.cpp"
-#include <cmath>
+#include "physics.h"
+
 
 class Direction
 {
@@ -26,9 +26,9 @@ public:
     Direction(double rad) : radians(normalize(rad)){}
     // Getters
     double getRadians() const { return radians; }
-    double getDegrees() const { return radians * (180.0 / PI); }
+    double getDegrees() const { return radians * (180.0 / M_PI); }
     double getNormalizedDegrees() const { 
-        return normalizeDegrees(radians * (180.0 / PI)); }
+        return normalizeDegrees(radians * (180.0 / M_PI)); }
     double getDx() const { return dirDx; }
     double getDy() const { return dirDy; }
     // Click methods
@@ -38,11 +38,11 @@ public:
     void clickRight() { normalize(radians -= 0.05); }
     // Reverse direction
     void reverseDirection() {
-        radians = normalize(radians + PI);
+        radians = normalize(radians + M_PI);
     }
     // Setters
     void setRadians(double rad) { radians = normalize(rad); }
-    void setDegrees(double deg) { radians = normalize(deg * (PI / 180.0)); }
+    void setDegrees(double deg) { radians = normalize(deg * (M_PI / 180.0)); }
     void add(double increment)  { radians = normalize(radians + increment);    }
     void setDxDy(double dx, double dy) {
         radians = atan2(dy, dx);
