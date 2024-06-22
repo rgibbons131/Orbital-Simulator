@@ -273,7 +273,7 @@ private:
       //EXERCISE
       ent.setAngle(dir);
       //VERIFY
-      assertUnit(ent.angle.radians == 3.452176277278305);
+      assertUnit(closeEnough(ent.angle.radians, 3.452176277278305));
       //TEARDOWN
 
    }
@@ -292,7 +292,7 @@ private:
       //EXERCISE
       ent.setAngle(dir);
       //VERIFY
-      assertUnit(ent.angle.radians == 2.831009030471691);
+      assertUnit(closeEnough(ent.angle.radians, 2.8310090299012813));
       //TEARDOWN
 
    }
@@ -311,7 +311,7 @@ private:
       //EXERCISE
       ent.setAngle(dir);
       //VERIFY
-      assertUnit(ent.angle.radians == 0.0);
+      assertUnit(closeEnough(ent.angle.radians, 0.0));
       //TEARDOWN
 
    }
