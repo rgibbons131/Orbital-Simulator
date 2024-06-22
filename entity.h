@@ -20,7 +20,7 @@ public:
    void setVelocity(Velocity vel) { velocity = vel; }
    void setAngle(float ang)       { angle = ang; }
 
-   void onHit() {};
+   void onHit() {}
 
    virtual void draw(ogstream* pgout) {}
    virtual void move() {}
