@@ -18,10 +18,10 @@ public:
 
    void setPosition(Position& pos) { position = pos; }
    void setVelocity(Velocity& vel) { velocity = vel; }
-   void setAngle(float ang)       { angle = ang; }
+   void setAngle(float ang)        { angle = ang; }
 
-   void onHit() {}
-
+   virtual void onHit() {}
+   virtual void die() {}
    virtual void draw(ogstream* pgout) {}
    virtual void move() {}
    
@@ -30,5 +30,6 @@ protected:
    Position position;
    Velocity velocity;
    float    angle;
+   bool     dead;
 };
 
