@@ -2,7 +2,7 @@
 #include "position.h"
 #include "velocity.h"
 
-
+class ogstream;
 class TestEntity;
 
 
@@ -20,6 +20,11 @@ public:
    void setVelocity(Velocity vel) { velocity = vel; }
    void setAngle(float ang)       { angle = ang; }
 
+   void onHit() {};
+
+   virtual void draw(ogstream* pgout) {}
+   virtual void move() {}
+   
 
 private:
    Position position;
