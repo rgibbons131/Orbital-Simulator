@@ -4,9 +4,8 @@
 
 class Direction
 {
-private:
-    bool bulletSelected;
-	double radians;
+protected:
+	 double radians;
     double degrees = 0;
     double dirDx = 0;
     double dirDy = 0;
@@ -23,8 +22,8 @@ public:
 	}
 
     // Constructors
-    Direction() : radians(0.0) , bulletSelected(true) {}
-    Direction(double rad) : radians(normalize(rad)), bulletSelected(true) {}
+    Direction() : radians(0.0) {}
+    Direction(double rad) : radians(normalize(rad)){}
     // Getters
     double getRadians() const { return radians; }
     double getDegrees() const { return radians * (180.0 / PI); }
@@ -49,9 +48,6 @@ public:
         radians = atan2(dy, dx);
         this->dirDx = dx;
         this->dirDy = dy;
-    }
-    void setForBullet(bool option) {
-        this->bulletSelected = option;
     }
 };
 

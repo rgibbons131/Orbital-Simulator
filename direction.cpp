@@ -1,4 +1,4 @@
-
+#pragma once
 #define TWO_PI 6.28318530718
 
 #include <math.h>    

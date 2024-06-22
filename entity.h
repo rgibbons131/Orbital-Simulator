@@ -11,13 +11,13 @@ class Entity
 {
 public:
 
-   friend testEntity;
+   friend TestEntity;
    Position getPosition() const { return position; }
    Velocity getVelocity() const { return velocity; }
    float    getAngle()    const { return angle;    }
 
-   void setPosition(Position pos) { position = pos; }
-   void setVelocity(Velocity vel) { velocity = vel; }
+   void setPosition(Position& pos) { position = pos; }
+   void setVelocity(Velocity& vel) { velocity = vel; }
    void setAngle(float ang)       { angle = ang; }
 
    void onHit() {}
@@ -26,7 +26,7 @@ public:
    virtual void move() {}
    
 
-private:
+protected:
    Position position;
    Velocity velocity;
    float    angle;

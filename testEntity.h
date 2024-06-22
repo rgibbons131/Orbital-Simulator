@@ -1,9 +1,11 @@
+#pragma once
 #include "entity.h"
 #include "position.h"
 #include "velocity.h"
 #include <cassert>
 #include "unitTest.h"
 #include "physics.h"
+#include "constants.cpp"
 class TestEntity : public UnitTest
 {
 public:
@@ -21,8 +23,9 @@ public:
       testGetAngleZero();
       testSetAngleLargePositive();
       testSetAngleLargeNegative();
-      testSetAngleLargeNegative();
+      testSetAngle2Pi();
 
+      report("Entity");
    }
 
 
@@ -42,7 +45,8 @@ private:
 
       //VERIFY
       assertUnit(ent.angle == 0.0);
-      assertUnit(ent.velocity == 0.0);
+      assertUnit(ent.velocity.dx == 0.0);
+      assertUnit(ent.velocity.dy == 0.0);
       assertUnit(ent.position.x = 0.0);
       assertUnit(ent.position.y = 0.0);
 
@@ -56,6 +60,7 @@ private:
    output: 14.1421
 
    */
+
    void testGetVelocityStandard()
    {
       //SETUP
@@ -65,9 +70,9 @@ private:
       vel.dy = 10.0;
       ent.velocity = vel;
       //EXERCISE
-      auto result = ent.getVelocity();
+      double result = ent.getVelocity().getSpeed();
       //VERIFY
-      assertUnit(ent.velocity = 14.1421);
+      assertUnit(result == 14.1421);
       //TEARDOWN
 
    }
@@ -89,7 +94,7 @@ private:
       //EXERCISE
       ent.setVelocity(vel);
       //VERIFY
-      assertUnit(ent.velocity = 0.0014);
+      assertUnit(ent.velocity == 0.0014);
       //TEARDOWN
 
    }
@@ -111,7 +116,7 @@ private:
       //EXERCISE
       ent.setVelocity(vel);
       //VERIFY
-      assertUnit(ent.velocity = 14142.1356);
+      assertUnit(ent.velocity == 14142.1356);
       //TEARDOWN
 
    }
@@ -133,7 +138,7 @@ private:
       //EXERCISE
       ent.setVelocity(vel);
       //VERIFY
-      assertUnit(ent.velocity = 14142.1356);
+      assertUnit(ent.velocity == 14142.1356);
       //TEARDOWN
 
    }
@@ -153,10 +158,10 @@ private:
       pos.y = 0.001;
       ent.position = pos;
       //EXERCISE
-      result = ent.getPosition();
+      Position result = ent.getPosition();
       //VERIFY
-      assertUnit(result.x = 0.001);
-      assertUnit(result.y = 0.001);
+      assertUnit(result.x == 0.001);
+      assertUnit(result.y == 0.001);
       //TEARDOWN
 
    }
@@ -182,8 +187,8 @@ private:
       //EXERCISE
       ent.setPosition(pos);
       //VERIFY
-      assertUnit(ent.x = 0.0);
-      assertUnit(ent.y = 0.0);
+      assertUnit(ent.position.x == 0.0);
+      assertUnit(ent.position.y == 0.0);
       //TEARDOWN
 
    }
@@ -204,8 +209,8 @@ private:
       //EXERCISE
       ent.setPosition(pos);
       //VERIFY
-      assertUnit(ent.x = 1000.0);
-      assertUnit(ent.y = 1000.0);
+      assertUnit(ent.position.x == 1000.0);
+      assertUnit(ent.position.y == 1000.0);
       //TEARDOWN
 
    }
@@ -226,8 +231,8 @@ private:
       //EXERCISE
       ent.setPosition(pos);
       //VERIFY
-      assertUnit(ent.x = 1000.0);
-      assertUnit(ent.y = 1000.0);
+      assertUnit(ent.position.x == 1000.0);
+      assertUnit(ent.position.y == 1000.0);
       //TEARDOWN
 
    }
@@ -248,7 +253,7 @@ private:
       //EXERCISE
       auto result = ent.getAngle();
       //VERIFY
-      assertUnit(result = 0.0);
+      assertUnit(result == 0.0);
       //TEARDOWN
 
    }
@@ -266,7 +271,7 @@ private:
       //EXERCISE
       ent.setAngle(10000.0);
       //VERIFY
-      assertUnit(ent.angle = 3.452);
+      assertUnit(ent.angle == 3.452);
       //TEARDOWN
 
    }
@@ -284,7 +289,7 @@ private:
       //EXERCISE
       ent.setAngle(-10000.0);
       //VERIFY
-      assertUnit(ent.angle = 2.831);
+      assertUnit(ent.angle == 2.831);
       //TEARDOWN
 
    }
@@ -295,16 +300,16 @@ private:
    output: angle = 0.0
 
    */
-   void testSetAngleLargeNegative()
+   void testSetAngle2Pi()
    {
       //SETUP
       Entity ent;
       //EXERCISE
       ent.setAngle(2 * PI);
       //VERIFY
-      assertUnit(ent.angle = 0.0);
+      assertUnit(ent.angle == 0.0);
       //TEARDOWN
 
    }
 
-}
+};

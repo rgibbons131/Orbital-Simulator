@@ -6,7 +6,7 @@
  * Summary:
  *    Everything we need to know about a location on the screen.
  ************************************************************************/
-
+#pragma once
 #include "position.h"
 #include <cassert>
 

@@ -6,11 +6,12 @@
  * Summary:
  *    The test runner for all the unit tests
  ************************************************************************/
-
+#pragma once
 #include "test.h"
 #include "testPosition.h"
 #include "testVelocity.h"
 #include "testDirection.h"
+#include "testEntity.h"
 
  // This code, and the similar IF_DEF in testRunner(), is to ensure that
  // you can see the text output (called the console window) and OpenGL's
@@ -41,4 +42,5 @@ void testRunner()
    TestPosition().run();
    TestVelocity().run();
    TestDirection().run();
+   TestEntity().run();
 }
