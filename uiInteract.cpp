@@ -9,7 +9,7 @@
  *     program will interface with this thorough the callback function
  *     pointer towards the bottom of the file.
  ************************************************************************/
-
+#pragma once
 #include <string>     // need you ask?
 #include <sstream>    // convert an integer into text
 #include <cassert>    // I feel the need... the need for asserts

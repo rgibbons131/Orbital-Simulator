@@ -7,7 +7,7 @@
  *    13 hours, most difficult in formatting and which methods to test 
  *	  together, or alone 
  ************************************************************************/
-
+#pragma once
 #include "direction.h"
 #include <cassert>
 #include "unitTest.h"

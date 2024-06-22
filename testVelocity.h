@@ -4,10 +4,8 @@
 //
 //  Created by Marisabel Trejo  on 3/15/24.
 //
+#pragma once
 #include <stdio.h>
-
-#ifndef test_velocity_hpp
-#define test_velocity_hpp
 #include "direction.h"
 #include <iostream>
 #include <cassert>
@@ -15,8 +13,6 @@
 #include "velocity.h"
 #include "unitTest.h"
 using namespace std;
-
-#endif /* test_velocity_hpp */
 
 /******************
 
