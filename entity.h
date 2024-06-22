@@ -7,7 +7,7 @@ class TestEntity;
 
 
 
-class entity
+class Entity
 {
 public:
 
