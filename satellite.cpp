@@ -1,5 +1,9 @@
 #include "satellite.h"
 
+/*************************************
+ * Satellite(Satellite& rhs)
+ * Copy constructor, taking another Satellite
+ **************************************/
 Satellite::Satellite(Satellite& rhs)
 {
    position = rhs.position;

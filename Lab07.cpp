@@ -32,26 +32,8 @@ public:
    Demo(Position ptUpperRight) :
       ptUpperRight(ptUpperRight)
    {
-      //ptHubble.setPixelsX(ptUpperRight.getPixelsX() * random(-0.5, 0.5));
-      //ptHubble.setPixelsY(ptUpperRight.getPixelsY() * random(-0.5, 0.5));
-
-      //ptSputnik.setPixelsX(ptUpperRight.getPixelsX() * random(-0.5, 0.5));
-      //ptSputnik.setPixelsY(ptUpperRight.getPixelsY() * random(-0.5, 0.5));
-
-      //ptStarlink.setPixelsX(ptUpperRight.getPixelsX() * random(-0.5, 0.5));
-      //ptStarlink.setPixelsY(ptUpperRight.getPixelsY() * random(-0.5, 0.5));
-
-      //ptCrewDragon.setPixelsX(ptUpperRight.getPixelsX() * random(-0.5, 0.5));
-      //ptCrewDragon.setPixelsY(ptUpperRight.getPixelsY() * random(-0.5, 0.5));
-
-      //ptShip.setPixelsX(ptUpperRight.getPixelsX() * random(-0.5, 0.5));
-      //ptShip.setPixelsY(ptUpperRight.getPixelsY() * random(-0.5, 0.5));
-
       ptGPS.setMetersX(0.0);
       ptGPS.setMetersY(42164000.0);
-
-      //ptStar.setPixelsX(ptUpperRight.getPixelsX() * random(-0.5, 0.5));
-      //ptStar.setPixelsY(ptUpperRight.getPixelsY() * random(-0.5, 0.5));
 
       angleShip = 0.0;
       angleGPS = 0.0;
@@ -121,11 +103,6 @@ void callBack(const Interface* pUI, void* p)
    // rotate the earth
    auto earthRotationSpeed = getEarthRotationSpeed();
    pDemo->angleEarth += earthRotationSpeed;
-   //pDemo->angleShip += 0.02;
-   //pDemo->phaseStar++;
-
-
-
 
    // Move the GPS
    // Starting velocity (x and y) = -3100.0 , 0.0
