@@ -1,6 +1,7 @@
 #pragma once
 #include "position.h"
 #include "velocity.h"
+#include "direction.h"
 
 class ogstream;
 class TestEntity;
@@ -10,7 +11,7 @@ class TestEntity;
 class Entity
 {
 public:
-
+    
    friend TestEntity;
    Entity() : position(Position()), velocity(Velocity()), angle(0.0), dead(false){}
    Entity(Position pos, Velocity vel, float a, bool dead) : 
@@ -22,7 +23,7 @@ public:
 
    void setPosition(Position& pos) { position = pos; }
    void setVelocity(Velocity& vel) { velocity = vel; }
-   void setAngle(float ang)        { angle = ang; }
+   void setAngle(Direction ang)       { angle = ang; }
 
    virtual void onHit() {}
    virtual void die() {}
@@ -31,9 +32,10 @@ public:
    
 
 protected:
-   Position position;
-   Velocity velocity;
-   float    angle;
+
    bool     dead;
+   Position  position;
+   Velocity  velocity;
+   Direction angle;
 };
 

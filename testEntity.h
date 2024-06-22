@@ -44,7 +44,7 @@ private:
       //EXERCISE
 
       //VERIFY
-      assertUnit(ent.angle == 0.0);
+      assertUnit(ent.angle.radians == 0.0);
       assertUnit(ent.velocity.dx == 0.0);
       assertUnit(ent.velocity.dy == 0.0);
       assertUnit(ent.position.x = 0.0);
@@ -70,9 +70,10 @@ private:
       vel.dy = 10.0;
       ent.velocity = vel;
       //EXERCISE
-      double result = ent.getVelocity().getSpeed();
+      Velocity result = ent.getVelocity();
       //VERIFY
-      assertUnit(result == 14.1421);
+      assertUnit(result.dx == 10.0);
+      assertUnit(result.dy == 10.0);
       //TEARDOWN
 
    }
@@ -94,7 +95,7 @@ private:
       //EXERCISE
       ent.setVelocity(vel);
       //VERIFY
-      assertUnit(ent.velocity == 0.0014);
+      assertUnit(ent.velocity == 0.001414213562373095);
       //TEARDOWN
 
    }
@@ -116,7 +117,7 @@ private:
       //EXERCISE
       ent.setVelocity(vel);
       //VERIFY
-      assertUnit(ent.velocity == 14142.1356);
+      assertUnit(ent.velocity == 14142.13562373095);
       //TEARDOWN
 
    }
@@ -138,7 +139,7 @@ private:
       //EXERCISE
       ent.setVelocity(vel);
       //VERIFY
-      assertUnit(ent.velocity == 14142.1356);
+      assertUnit(ent.velocity == 14142.13562373095);
       //TEARDOWN
 
    }
@@ -231,8 +232,8 @@ private:
       //EXERCISE
       ent.setPosition(pos);
       //VERIFY
-      assertUnit(ent.position.x == 1000.0);
-      assertUnit(ent.position.y == 1000.0);
+      assertUnit(ent.position.x == -1000.0);
+      assertUnit(ent.position.y == -1000.0);
       //TEARDOWN
 
    }
@@ -247,11 +248,11 @@ private:
    {
       //SETUP
       Entity ent;
-      float angle = 0.0;
-      ent.angle = angle;
+      Direction dir(0.0);
+      ent.angle = dir;
 
       //EXERCISE
-      auto result = ent.getAngle();
+      auto result = ent.getAngle().radians;
       //VERIFY
       assertUnit(result == 0.0);
       //TEARDOWN
@@ -261,17 +262,18 @@ private:
    /*
    setAngle : largePositive
    Input : 10000.0
-   output: angle = 3.452
+   output: angle = 3.452176277278305
 
    */
    void testSetAngleLargePositive()
    {
       //SETUP
       Entity ent;
+      Direction dir(10000.0);
       //EXERCISE
-      ent.setAngle(10000.0);
+      ent.setAngle(dir);
       //VERIFY
-      assertUnit(ent.angle == 3.452);
+      assertUnit(ent.angle.radians == 3.452176277278305);
       //TEARDOWN
 
    }
@@ -286,10 +288,11 @@ private:
    {
       //SETUP
       Entity ent;
+      Direction dir(-10000.0);
       //EXERCISE
-      ent.setAngle(-10000.0);
+      ent.setAngle(dir);
       //VERIFY
-      assertUnit(ent.angle == 2.831);
+      assertUnit(ent.angle.radians == 2.831009030471691);
       //TEARDOWN
 
    }
@@ -304,10 +307,11 @@ private:
    {
       //SETUP
       Entity ent;
+      Direction dir(2.0 * M_PI);
       //EXERCISE
-      ent.setAngle(2.0 * M_PI);
+      ent.setAngle(dir);
       //VERIFY
-      assertUnit(ent.angle == 0.0);
+      assertUnit(ent.angle.radians == 0.0);
       //TEARDOWN
 
    }
