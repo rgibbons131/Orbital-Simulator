@@ -5,7 +5,9 @@
 
 class GPS : public Satellite
 {
-   void draw(ogstream* pgout) 
-   { pgout->drawGPS(position, angle); }
-};
+   void draw(ogstream* pgout)
+   {
+      pgout->drawGPS(position, angle.getRadians());
+   }
+}
 
