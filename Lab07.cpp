@@ -54,6 +54,7 @@ public:
       //ptStar.setPixelsY(ptUpperRight.getPixelsY() * random(-0.5, 0.5));
 
       angleShip = 0.0;
+      angleGPS = 0.0;
       angleEarth = 0.0;
       //phaseStar = 0;
 
@@ -61,6 +62,10 @@ public:
       // Initial velocity
       velocityX = -3100.0;
       velocityY = 0.0;
+      Velocity initialGPSv = Velocity(-3100.0, 0.0);
+      gps.setAngle(angleGPS);
+      gps.setPosition(ptGPS);
+      gps.setVelocity(initialGPSv);
    }
    float velocityX;
    float velocityY;
@@ -78,6 +83,7 @@ public:
 
    double angleShip;
    double angleEarth;
+   double angleGPS;
 };
 
 /*************************************
@@ -139,11 +145,11 @@ void callBack(const Interface* pUI, void* p)
    pDemo->velocityY += accelY * TPF;
 
    // Update position
-   float newX = pDemo->ptGPS.getMetersX() + pDemo->velocityX * TPF;
-   float newY = pDemo->ptGPS.getMetersY() + pDemo->velocityY * TPF;
+   float newX = pDemo->gps.getPosition().getMetersX() + pDemo->velocityX * TPF;
+   float newY = pDemo->gps.getPosition().getMetersY() + pDemo->velocityY * TPF;
+   Position newPosition = Position(newX, newY);;
 
-   pDemo->ptGPS.setMetersX(newX);
-   pDemo->ptGPS.setMetersY(newY);
+   pDemo->gps.setPosition(newPosition);
 
 
 
@@ -166,7 +172,8 @@ void callBack(const Interface* pUI, void* p)
    //gout.drawSputnik   (pDemo->ptSputnik,    pDemo->angleShip);
    //gout.drawStarlink  (pDemo->ptStarlink,   pDemo->angleShip);
    //gout.drawShip      (pDemo->ptShip,       pDemo->angleShip, pUI->isSpace());
-   gout.drawGPS       (pDemo->ptGPS,        pDemo->angleShip);
+   //gout.drawGPS       (pDemo->ptGPS,        pDemo->angleShip);
+   pDemo->gps.draw(&gout);
 
    // draw parts
    //pt.setPixelsX(pDemo->ptCrewDragon.getPixelsX() + 20);
