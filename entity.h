@@ -1,6 +1,7 @@
 #pragma once
 #include "position.h"
 #include "velocity.h"
+#include "direction.h"
 
 class ogstream;
 class TestEntity;
@@ -10,15 +11,16 @@ class TestEntity;
 class Entity
 {
 public:
-
+    
    friend TestEntity;
-   Position getPosition() const { return position; }
-   Velocity getVelocity() const { return velocity; }
-   float    getAngle()    const { return angle;    }
+   Entity() : angle(Direction(0.0)), position(Position(0.0, 0.0)), velocity(Velocity(0.0, 0.0)) {}
+   Position  getPosition() const { return position; }
+   Velocity  getVelocity() const { return velocity; }
+   Direction getAngle()    const { return angle;    }
 
    void setPosition(Position& pos) { position = pos; }
    void setVelocity(Velocity& vel) { velocity = vel; }
-   void setAngle(float ang)       { angle = ang; }
+   void setAngle(Direction ang)       { angle = ang; }
 
    void onHit() {}
 
@@ -27,8 +29,8 @@ public:
    
 
 protected:
-   Position position;
-   Velocity velocity;
-   float    angle;
+   Position  position;
+   Velocity  velocity;
+   Direction angle;
 };
 
