@@ -10,7 +10,9 @@ public:
    GPS(Position pos, Velocity vel, float a, bool dead) : 
       Satellite(pos, vel, a, dead) {}
    GPS(GPS& rhs);
-   void draw(ogstream* pgout) 
-   { pgout->drawGPS(position, angle); }
+   void draw(ogstream* pgout)
+   {
+      pgout->drawGPS(position, angle.getRadians());
+   }
 };
 
