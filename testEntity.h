@@ -47,8 +47,8 @@ private:
       assertUnit(ent.angle.radians == 0.0);
       assertUnit(ent.velocity.dx == 0.0);
       assertUnit(ent.velocity.dy == 0.0);
-      assertUnit(ent.position.x = 0.0);
-      assertUnit(ent.position.y = 0.0);
+      assertUnit(ent.position.x == 0.0);
+      assertUnit(ent.position.y == 0.0);
 
       //TEARDOWN
 

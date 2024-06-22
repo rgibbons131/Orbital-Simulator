@@ -13,7 +13,7 @@ class Entity
 public:
     
    friend TestEntity;
-   Entity() : position(Position()), velocity(Velocity()), angle(0.0), dead(false){}
+   Entity() : position(Position(0.0, 0.0)), velocity(Velocity(0.0, 0.0)), angle(0.0), dead(false){}
    Entity(Position pos, Velocity vel, float a, bool dead) : 
       position(pos), velocity(vel), angle(a), dead(dead){}
    Entity(Entity& rhs);
