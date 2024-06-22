@@ -115,7 +115,6 @@ private:
 		dir.clickUp();
 		//Verify
 		double myRadians = dir.getRadians();
-		cout << myRadians << "\n";
 		assertUnit(dir.closeEnough(myRadians, 1.206, 0.001) == 1);
 		//Teardown
 	}
