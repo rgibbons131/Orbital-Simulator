@@ -9,6 +9,20 @@ class TestEntity : public UnitTest
 public:
    void run()
    {
+      testConstructor();
+      testGetVelocityStandard();
+      testSetVelocitySmall();
+      testSetVelocityLargeNegative();
+      testSetVelocityLargePositive();
+      testGetPositionSmallDecimal();
+      testSetPositionZero();
+      testSetPositionTopRight();
+      testSetPositionBottomLeft();
+      testGetAngleZero();
+      testSetAngleLargePositive();
+      testSetAngleLargeNegative();
+      testSetAngleLargeNegative();
+
    }
 
 

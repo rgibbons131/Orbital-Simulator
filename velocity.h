@@ -12,6 +12,8 @@
 
 #endif /* onevelocity_hpp */
 
+class testEntity;
+
  /***********************************************************
   * VELOCITY
   * The velocity class
@@ -21,7 +23,9 @@
 
 class Velocity 
 {
+
 private:
+
     // velocity component in the x-direction
     double dx;
     // velocity component in the y-direction
@@ -42,6 +46,7 @@ private:
     }
 public:
 
+   friend testEntity;
     // Constructors
     Velocity() : dx(0.0), dy(0.0) {}
     Velocity(double dx_, double dy_) : dx(dx_), dy(dy_) {}
