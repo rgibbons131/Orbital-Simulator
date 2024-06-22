@@ -10,7 +10,7 @@
  * 5. How long did it take for you to complete the assignment?
  *      ??
  *****************************************************************/
-
+#pragma once
 #include <cassert>      // for ASSERT
 #include "uiInteract.h" // for INTERFACE
 #include "uiDraw.h"     // for RANDOM and DRAW*
