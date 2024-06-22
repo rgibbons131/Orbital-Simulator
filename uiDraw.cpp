@@ -9,7 +9,7 @@
  *    retain state. In other words, they are verbs (functions), not nouns
  *    (variables) or a mixture (objects)
  ************************************************************************/
-
+#pragma once
 #include <string>     // need you ask?
 #include <sstream>    // convert an integer into text
 #include <cassert>    // I feel the need... the need for asserts

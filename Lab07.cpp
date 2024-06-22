@@ -17,6 +17,9 @@
 #include "position.h"      // for POINT
 #include "test.h"
 #include "physics.h"
+#include "entity.h"
+#include "GPS.h"
+#include "satellite.h"
 using namespace std;
 
 /*************************************************************************
@@ -69,6 +72,7 @@ public:
    Position ptGPS;
    Position ptStar;
    Position ptUpperRight;
+   GPS gps;
 
    unsigned char phaseStar;
 
@@ -143,7 +147,7 @@ void callBack(const Interface* pUI, void* p)
 
 
 
-
+   
 
    //
    // draw everything
