@@ -1,8 +1,8 @@
 #pragma once
-#include "entity.h"
+#include "satellite.h"
 
 
-class GPS : public Entity
+class GPS : public Satellite
 {
 };
 
