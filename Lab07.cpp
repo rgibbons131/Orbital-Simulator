@@ -108,9 +108,13 @@ void callBack(const Interface* pUI, void* p)
    // Starting velocity (x and y) = -3100.0 , 0.0
    // Need to track and increment velocity, position, and accelertation
 
+   pDemo->gps.move();
+
    // Calculate height above Earth
+   /*
    float height = getHeightAboveEarth(pDemo->gps.getPosition().getMetersX(), pDemo->gps.getPosition().getMetersY());
 
+   
    // Calculate gravitational acceleration
    float gravity = getGravity(height);
    float gravityDirection = getDirectionOfGravityPull(pDemo->gps.getPosition().getMetersX(), pDemo->gps.getPosition().getMetersY());
@@ -129,6 +133,7 @@ void callBack(const Interface* pUI, void* p)
    Position newPosition = Position(newX, newY);;
 
    pDemo->gps.setPosition(newPosition);
+   */
 
    //
    // draw everything

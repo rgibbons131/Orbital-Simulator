@@ -2,6 +2,7 @@
 #include "position.h"
 #include "velocity.h"
 #include "direction.h"
+#include "physics.h"
 
 class ogstream;
 class TestEntity;
@@ -28,7 +29,7 @@ public:
    virtual void onHit() {}
    virtual void die() {}
    virtual void draw(ogstream* pgout) {}
-   virtual void move() {}
+   virtual void move();
    
 
 protected:
