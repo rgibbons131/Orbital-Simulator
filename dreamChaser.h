@@ -1,9 +1,19 @@
 #pragma once
 #include "satellite.h"
+#include "uiDraw.h"
 class DreamChaser :
     public Satellite
 {
 public:
-   void move();
+   DreamChaser() : Satellite(), thrust(false) {}
+   DreamChaser(Position pos, Velocity vel, float a, bool dead) :
+      Satellite(pos, vel, a, dead), thrust(false) {}
+   void move(const Interface* pUI);
+   void draw(ogstream* pgout)
+   {
+      pgout->drawShip(position, angle.getRadians(), thrust);
+   }
+private:
+   bool thrust;
 };
 

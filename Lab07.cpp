@@ -25,6 +25,7 @@
 #include "dragon.h"
 #include "sputnik.h"
 #include "hubble.h"
+#include "dreamChaser.h"
 using namespace std;
 
 /*************************************************************************
@@ -169,12 +170,21 @@ public:
       
       //phaseStar = 0;
 
+      //Ship
+      ptShip.setMetersX(-36515195.13);
+      ptShip.setMetersY(21082000.0);
+      angleShip= 0.0;
+
+      Velocity initialShipV = Velocity(0.0, 0.0);
+
+      ship.setPosition(ptShip);
+      ship.setVelocity(initialShipV);
+      ship.setAngle(angleShip);
+
+      entities.push_back(&ship);
 
       // Initial velocity
-      velocityX = -3100.0;
-      velocityY = 0.0;
       angleEarth = 0.0;
-      angleShip = 0.0;
    }
    float velocityX;
    float velocityY;
@@ -201,6 +211,7 @@ public:
    Sputnik  sputnik;
    Hubble   hubble;
    Dragon   dragon;
+   DreamChaser ship;
    vector<Entity *> entities;
 
 
@@ -297,23 +308,10 @@ void callBack(const Interface* pUI, void* p)
    // draw the earth
    pt.setMeters(0.0, 0.0);
    gout.drawEarth(pt, pDemo->angleEarth);
-   // draw satellites
-   //gout.drawCrewDragon(pDemo->ptCrewDragon, pDemo->angleShip);
-   //gout.drawHubble    (pDemo->ptHubble,     pDemo->angleShip);
-   //gout.drawSputnik   (pDemo->ptSputnik,    pDemo->angleShip);
-   //gout.drawStarlink  (pDemo->ptStarlink,   pDemo->angleShip);
-   //gout.drawShip      (pDemo->ptShip,       pDemo->angleShip, pUI->isSpace());
-   //gout.drawGPS       (pDemo->ptGPS,        pDemo->angleShip);
-   pDemo->gps1.draw(&gout);
-   pDemo->gps2.draw(&gout);
-   pDemo->gps3.draw(&gout);
-   pDemo->gps4.draw(&gout);
-   pDemo->gps5.draw(&gout);
-   pDemo->gps6.draw(&gout);
-   pDemo->starlink.draw(&gout);
-   pDemo->sputnik.draw(&gout);
-   pDemo->hubble.draw(&gout);
-   pDemo->dragon.draw(&gout);
+   for (int i = 0; i < pDemo->entities.size(); i++)
+   {
+      pDemo->entities[i]->draw(&gout);
+   }
 
    // draw parts
    //pt.setPixelsX(pDemo->ptCrewDragon.getPixelsX() + 20);
