@@ -12,6 +12,7 @@
  *****************************************************************/
 #pragma once
 #include <cassert>      // for ASSERT
+#include <vector>
 #include "uiInteract.h" // for INTERFACE
 #include "uiDraw.h"     // for RANDOM and DRAW*
 #include "position.h"      // for POINT
@@ -47,6 +48,8 @@ public:
       gps1.setVelocity(initialGPSv1);
       gps1.setAngle(angleGPS1);
 
+      entities.push_back(&gps1);
+
       //GPS2
       ptGPS2.setMetersX(23001634.72);
       ptGPS2.setMetersY(13280000.0);
@@ -57,6 +60,8 @@ public:
       gps2.setPosition(ptGPS2);
       gps2.setVelocity(initialGPSv2);
       gps2.setAngle(angleGPS2);
+
+      entities.push_back(&gps2);
 
       //GPS3
       ptGPS3.setMetersX(23001634.72);
@@ -69,6 +74,8 @@ public:
       gps3.setVelocity(initialGPSv3);
       gps3.setAngle(angleGPS3);
 
+      entities.push_back(&gps3);
+
       //GPS4
       ptGPS4.setMetersX(0.0);
       ptGPS4.setMetersY(-26560000.0);
@@ -79,6 +86,8 @@ public:
       gps4.setPosition(ptGPS4);
       gps4.setVelocity(initialGPSv4);
       gps4.setAngle(angleGPS4);
+
+      entities.push_back(&gps4);
 
       //GPS5
       ptGPS5.setMetersX(-23001634.72);
@@ -91,6 +100,8 @@ public:
       gps5.setVelocity(initialGPSv5);
       gps5.setAngle(angleGPS5);
 
+      entities.push_back(&gps5);
+
       //GPS6
       ptGPS6.setMetersX(-23001634.72);
       ptGPS6.setMetersY(13280000.0);
@@ -101,6 +112,8 @@ public:
       gps6.setPosition(ptGPS6);
       gps6.setVelocity(initialGPSv6);
       gps6.setAngle(angleGPS6);
+
+      entities.push_back(&gps6);
 
       //Starlink
       ptStarlink.setMetersX(0.0);
@@ -113,6 +126,8 @@ public:
       starlink.setVelocity(initialStarlinkV);
       starlink.setAngle(angleStarlink);
 
+      entities.push_back(&starlink);
+
       //Sputnik
       ptSputnik.setMetersX(-36515095.13);
       ptSputnik.setMetersY(21082000.0);
@@ -123,6 +138,8 @@ public:
       sputnik.setPosition(ptSputnik);
       sputnik.setVelocity(initialSputnikV);
       sputnik.setAngle(angleSputnik);
+
+      entities.push_back(&sputnik);
 
       //Hubble
       ptHubble.setMetersX(0.0);
@@ -135,6 +152,8 @@ public:
       hubble.setVelocity(initialHubbleV);
       hubble.setAngle(angleHubble);
 
+      entities.push_back(&hubble);
+
       //Dragon
       ptCrewDragon.setMetersX(0.0);
       ptCrewDragon.setMetersY(8000000.0);
@@ -145,6 +164,8 @@ public:
       dragon.setPosition(ptCrewDragon);
       dragon.setVelocity(initialDragonV);
       dragon.setAngle(angleDragon);
+
+      entities.push_back(&dragon);
       
       //phaseStar = 0;
 
@@ -180,6 +201,7 @@ public:
    Sputnik  sputnik;
    Hubble   hubble;
    Dragon   dragon;
+   vector<Entity *> entities;
 
 
    unsigned char phaseStar;
@@ -234,20 +256,10 @@ void callBack(const Interface* pUI, void* p)
    auto earthRotationSpeed = getEarthRotationSpeed();
    pDemo->angleEarth += earthRotationSpeed;
 
-   // Move the GPS
-   // Starting velocity (x and y) = -3100.0 , 0.0
-   // Need to track and increment velocity, position, and accelertation
-
-   pDemo->gps1.move();
-   pDemo->gps2.move();
-   pDemo->gps3.move();
-   pDemo->gps4.move();
-   pDemo->gps5.move();
-   pDemo->gps6.move();
-   pDemo->starlink.move();
-   pDemo->sputnik.move();
-   pDemo->hubble.move();
-   pDemo->dragon.move();
+   for (int i = 0; i < pDemo->entities.size(); i++)
+   {
+      pDemo->entities[i]->move(pUI);
+   }
 
    // Calculate height above Earth
    /*

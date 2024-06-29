@@ -1,33 +1,6 @@
-#include "entity.h"
+#include "dreamChaser.h"
 
-/*************************************
- * Entity(Entity& rhs)
- * Copy constructor, taking another Entity
- **************************************/
-Entity::Entity(const Entity& rhs)
-{
-   position = rhs.position;
-   velocity = rhs.velocity;
-   angle    = rhs.angle;
-   dead     = rhs.dead;
-}
-
-
-Entity& Entity::operator=(const Entity& rhs)
-{
-   position = rhs.position;
-   velocity = rhs.velocity;
-   angle = rhs.angle;
-   dead = rhs.dead;
-   return *this;
-}
-
-/***************************************************************
-* Entity::move()
-* Moves the entity based on it's current movement variables,
-* Velocity and Position. Then updates these variables.
-******************************************************************/
-void Entity::move(const Interface* pUI)
+void DreamChaser::move()
 {
    float height = getHeightAboveEarth(position.getMetersX(), position.getMetersY());
 
@@ -50,5 +23,4 @@ void Entity::move(const Interface* pUI)
    // Update velocity
    velocity.addDx(accelX * TPF / 2);
    velocity.addDy(accelY * TPF / 2);
-
 }

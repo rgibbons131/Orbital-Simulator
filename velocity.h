@@ -117,7 +117,7 @@ public:
         dy = -dy;
     }
 
-    Velocity& operator = (Velocity& rhs)
+    Velocity& operator = (const Velocity& rhs)
     {
        dx = rhs.dx;
        dy = rhs.dy;
