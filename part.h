@@ -53,3 +53,93 @@ public:
       gout->drawGPSCenter(position, angle.getRadians());
    }
 };
+
+class HubbleTelescope : public Part
+{
+public:
+   HubbleTelescope(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) {}
+   void draw(ogstream* gout)
+   {
+      gout->drawHubbleTelescope(position, angle.getRadians());
+   }
+};
+
+class HubbleComputer : public Part
+{
+public:
+   HubbleComputer(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) {}
+   void draw(ogstream* gout)
+   {
+      gout->drawHubbleComputer(position, angle.getRadians());
+   }
+};
+
+class HubbleLeft : public Part
+{
+public:
+   HubbleLeft(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) {}
+   void draw(ogstream* gout)
+   {
+      gout->drawHubbleLeft(position, angle.getRadians());
+   }
+};
+
+class HubbleRight : public Part
+{
+public:
+   HubbleRight(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) {}
+   void draw(ogstream* gout)
+   {
+      gout->drawHubbleRight(position, angle.getRadians());
+   }
+};
+
+class DragonCenter : public Part
+{
+public:
+   DragonCenter(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) {}
+   void draw(ogstream* gout)
+   {
+      gout->drawCrewDragonCenter(position, angle.getRadians());
+   }
+};
+
+class DragonLeft : public Part
+{
+public:
+   DragonLeft(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) {}
+   void draw(ogstream* gout)
+   {
+      gout->drawCrewDragonLeft(position, angle.getRadians());
+   }
+};
+
+class DragonRight : public Part
+{
+public:
+   DragonRight(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) {}
+   void draw(ogstream* gout)
+   {
+      gout->drawCrewDragonRight(position, angle.getRadians());
+   }
+};
+
+class StarLinkBody : public Part
+{
+public:
+   StarLinkBody(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) {}
+   void draw(ogstream* gout)
+   {
+      gout->drawStarlinkBody(position, angle.getRadians());
+   }
+};
+
+class StarLinkArray : public Part
+{
+public:
+   StarLinkArray(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) {}
+   void draw(ogstream* gout)
+   {
+      gout->drawStarlinkArray(position, angle.getRadians());
+   }
+};

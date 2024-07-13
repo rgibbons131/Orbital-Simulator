@@ -10,16 +10,20 @@ vector<Entity*> Starlink::die()
    double arrayRad = 4.0;
 
 
-   //Part body(drawBody, -90.0, bodyRad);
-   //Part link(drawArray, 90.0, arrayRad);
+   StarLinkBody* body = new StarLinkBody
+   ( -90.0, bodyRad, position);
+   StarLinkArray* link = new StarLinkArray
+   ( 90.0, arrayRad, position);
 
-   Fragment linkFrag1(position, velocity, 180, false);
-   Fragment linkFrag2(position, velocity, 0, false);
+   Fragment* linkFrag1 = new Fragment
+   (position, velocity, 180, false);
+   Fragment* linkFrag2 = new Fragment
+(position, velocity, 0, false);
 
-   //vec.push_back(&body);
-   //vec.push_back(&link);
-   vec.push_back(&linkFrag1);
-   vec.push_back(&linkFrag2);
+   vec.push_back(body);
+   vec.push_back(link);
+   vec.push_back(linkFrag1);
+   vec.push_back(linkFrag2);
 
    dead = true;
    return vec;
