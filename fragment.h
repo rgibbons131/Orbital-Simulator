@@ -22,6 +22,9 @@ public:
    { 
       this->position.addPixelsX(getHorizontalAccel(a, 4));
       this->position.addPixelsY(getVerticalAccel(a, 4));
+      double kick = random(5000, 9000);
+      this->velocity.addDx(getHorizontalAccel(a, kick));
+      this->velocity.addDy(getVerticalAccel(a, kick));
    }
    void onHit() { die(); }
    void draw(ogstream* pgout)

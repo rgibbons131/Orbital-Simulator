@@ -17,6 +17,9 @@ public:
       drawFunc = drawFunction;
       this->position.addPixelsX(getHorizontalAccel(a, 4));
       this->position.addPixelsY(getVerticalAccel(a, 4));
+      double kick = random(5000, 9000);
+      this->velocity.addDx(getHorizontalAccel(a, kick));
+      this->velocity.addDy(getVerticalAccel(a, kick));
    };
    void (ogstream::* drawFunc)(const Position& center,double rotation);
 
@@ -25,6 +28,9 @@ public:
       drawFuncOffset = drawFunctionOffset; 
       this->position.addPixelsX(getHorizontalAccel(a, 4));
       this->position.addPixelsY(getVerticalAccel(a, 4));
+      double kick = random(5000, 9000);
+      this->velocity.addDx(getHorizontalAccel(a, kick));
+      this->velocity.addDy(getVerticalAccel(a, kick));
    };
    void (ogstream::* drawFuncOffset)(const Position& center, double rotation, const Position& offset);
 
