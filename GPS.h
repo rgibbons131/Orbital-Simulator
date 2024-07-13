@@ -20,7 +20,7 @@ public:
    }
    GPS(const Position& pos,const Velocity& vel,const float& a,const bool& dead, const double& radius = 12) :
       Satellite(pos, vel, a, dead, radius) {}
-   vector<Entity> die(ogstream* pgout);
+   vector<Entity*> die();
    void draw(ogstream* pgout)
    {
       pgout->drawGPS(position, angle.getRadians());

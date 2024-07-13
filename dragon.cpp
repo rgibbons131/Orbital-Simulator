@@ -3,9 +3,9 @@
 #include "fragment.h"
 #include "uiDraw.h"
 
-vector<Entity> Dragon::die(ogstream* pgout)
+vector<Entity*> Dragon::die()
 {
-   vector<Entity> vec;
+   vector<Entity*> vec;
    double centerRad = 6.0;
    double leftRad = 6.0;
    double rightRad = 6.0;
@@ -20,11 +20,11 @@ vector<Entity> Dragon::die(ogstream* pgout)
    Fragment dragFrag1(position, velocity, 180, false);
    Fragment dragFrag2(position, velocity, 0, false);
 
-   vec.push_back(center);
-   vec.push_back(left);
-   vec.push_back(right);
-   vec.push_back(dragFrag1);
-   vec.push_back(dragFrag2);
+   vec.push_back(&center);
+   vec.push_back(&left);
+   vec.push_back(&right);
+   vec.push_back(&dragFrag1);
+   vec.push_back(&dragFrag2);
 
    dead = true;
    return vec;

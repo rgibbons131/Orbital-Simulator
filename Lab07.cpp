@@ -172,8 +172,8 @@ public:
       //phaseStar = 0;
 
       //Ship
-      ptShip.setPixelsX(-450);
-      ptShip.setPixelsY(450);
+      ptShip.setMetersX(-46515215.13);
+      ptShip.setMetersY(21082000.0);
       angleShip= 0.0;
 
       Velocity initialShipV = Velocity(0.0, 0.0);
@@ -269,7 +269,7 @@ void callBack(const Interface* pUI, void* p)
       }
    }
 
-   // create new entities from collision
+   // create new entities
    vector<int> deadIndecies;
    for (int index1 = 0; index1 < pDemo->entities.size(); index1++)
    {
@@ -283,13 +283,11 @@ void callBack(const Interface* pUI, void* p)
          }
       }
    }
-
-   // create bullets
-   if (pDemo->ship.isShooting())
+   for (int i : deadIndecies)
    {
-      Entity* bullet = pDemo->ship.shoot();
-      pDemo->entities.push_back(bullet);
+      //std::cout << i << "\n";
    }
+   
 
    // kill dead entities
    for (int index = deadIndecies.size() - 1; index >=0; index--)

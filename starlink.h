@@ -15,7 +15,7 @@ public:
    Starlink() : Satellite() { this->radius = 6; }
    Starlink(const Position& pos,const Velocity& vel,const float& a,const bool& dead, const double& radius = 6) :
       Satellite(pos, vel, a, dead, radius) {}
-   vector<Entity> die(ogstream* pgout);
+   vector<Entity*> die();
    void draw(ogstream* pgout)
    {
       pgout->drawStarlink(position, angle.getRadians());

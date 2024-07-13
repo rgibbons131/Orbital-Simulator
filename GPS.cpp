@@ -3,9 +3,9 @@
 #include "fragment.h"
 #include "uiDraw.h"
 
-vector<Entity> GPS::die(ogstream* pgout)
+vector<Entity*> GPS::die()
 {
-   vector<Entity> vec;
+   vector<Entity*> vec;
    double centerRad = 7.0;
    double leftRad = 8.0;
    double rightRad = 8.0;
@@ -20,11 +20,11 @@ vector<Entity> GPS::die(ogstream* pgout)
    Fragment GPSFrag1(position, velocity, 180, false);
    Fragment GPSFrag2(position, velocity, 0, false);
 
-   vec.push_back(center);
-   vec.push_back(left);
-   vec.push_back(right);
-   vec.push_back(GPSFrag1);
-   vec.push_back(GPSFrag2);
+   vec.push_back(&center);
+   vec.push_back(&left);
+   vec.push_back(&right);
+   vec.push_back(&GPSFrag1);
+   vec.push_back(&GPSFrag2);
 
    dead = true;
    return vec;
