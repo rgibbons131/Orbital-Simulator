@@ -16,6 +16,7 @@
 
 class ogstream;
 class TestEntity;
+class TestSatellite;
 
 
 
@@ -24,13 +25,14 @@ class Entity
 public:
     
    friend TestEntity;
-   Entity() : position(Position(0.0, 0.0)), velocity(Velocity(0.0, 0.0)), angle(0.0), dead(false){}
-   Entity(const Position & pos,const Velocity & vel,const float & a,const bool & dead) : 
+   Entity() : position(Position(0.0, 0.0)), velocity(Velocity(0.0, 0.0)), angle(0.0), dead(false), radius(0.0){}
+   Entity(const Position & pos,const Velocity & vel,const float & a,const bool & dead, const double & radius) : 
       position(pos), velocity(vel), angle(a), dead(dead){}
    Entity(const Entity& rhs);
    Position getPosition() const { return position; }
    Velocity getVelocity() const { return velocity; }
    Direction    getAngle()    const { return angle;    }
+   double   getRadius() const { return radius; }
 
    void setPosition(const Position& pos) { position = pos; }
    void setVelocity(const Velocity& vel) { velocity = vel; }
@@ -53,5 +55,6 @@ protected:
    Position  position;
    Velocity  velocity;
    Direction angle;
+   double radius;
 };
 
