@@ -26,13 +26,13 @@ public:
       this->velocity.addDx(getHorizontalAccel(a, kick));
       this->velocity.addDy(getVerticalAccel(a, kick));
    }
-   void onHit() { die(); }
+   void onHit() { dead = true; }
    void draw(ogstream* pgout)
    {
       pgout->drawFragment(position, angle.getRadians());
    }
    void move(const Interface* pUI);
-private:
+protected:
    int lifespan;
    double spin;
 };

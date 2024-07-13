@@ -42,7 +42,7 @@ public:
 
    Entity& operator= (const Entity& rhs);
 
-   virtual void onHit() {}
+   virtual void onHit() { dead = true; }
    virtual vector<Entity *> die() {
       vector<Entity *> v;
       return v; 
