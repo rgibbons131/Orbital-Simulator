@@ -13,12 +13,19 @@ vector<Entity> Dragon::die(ogstream* pgout)
    void (ogstream:: * drawLeft)(const Position & center, double rotation, const Position & offset) = &ogstream::drawCrewDragonLeft;
    void (ogstream:: * drawRight)(const Position & center, double rotation, const Position & offset) = &ogstream::drawCrewDragonRight;
    
-   Part center(drawCenter, centerRad);
-   Part left(drawLeft, leftRad);
-   Part right(drawRight, rightRad);
+   Part center(drawCenter,0.0, centerRad);
+   Part left(drawLeft,-90.0, leftRad);
+   Part right(drawRight,90.0, rightRad);
+
+   Fragment dragFrag1(position, velocity, 180, false);
+   Fragment dragFrag2(position, velocity, 0, false);
 
    vec.push_back(center);
    vec.push_back(left);
    vec.push_back(right);
+   vec.push_back(dragFrag1);
+   vec.push_back(dragFrag2);
+
+   dead = true;
    return vec;
 }

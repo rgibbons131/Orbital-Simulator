@@ -1,1 +1,22 @@
 #include "sputnik.h"
+#include "part.h"
+#include "fragment.h"
+#include "uiDraw.h"
+
+vector<Entity> Sputnik::die(ogstream* pgout)
+{
+   vector<Entity> vec;
+
+   Fragment sputFrag1(position, velocity, 180.0, false);
+   Fragment sputFrag2(position, velocity, 0.0, false);
+   Fragment sputFrag3(position, velocity, 90.0, false);
+   Fragment sputFrag4(position, velocity, -90.0, false);
+
+   vec.push_back(sputFrag1);
+   vec.push_back(sputFrag2);
+   vec.push_back(sputFrag3);
+   vec.push_back(sputFrag4);
+
+   dead = true;
+   return vec;
+}
