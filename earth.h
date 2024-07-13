@@ -17,6 +17,7 @@ public:
    {
       pgout->drawEarth(position, angle.getRadians());
    }
+   bool isDead() { return false; }
    void onHit() {};
 };
 

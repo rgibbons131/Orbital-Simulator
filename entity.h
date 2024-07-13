@@ -36,13 +36,15 @@ public:
 
    void setPosition(const Position& pos) { position = pos; }
    void setVelocity(const Velocity& vel) { velocity = vel; }
-   void setAngle(const Direction& ang)       { angle = ang; }
+   void setAngle(const Direction& ang)      { angle = ang; }
+   bool const isTouching(const Position& pos, double r) { return (r + radius >= position.computeDistancePx(position, pos)); }
+   bool const isDead() { return dead; }
 
    Entity& operator= (const Entity& rhs);
 
    virtual void onHit() {}
-   virtual vector<Entity> die() {
-      vector<Entity> v;
+   virtual vector<Entity *> die() {
+      vector<Entity *> v;
       return v; 
    }
    virtual void draw(ogstream* pgout) {}

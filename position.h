@@ -62,6 +62,21 @@ public:
       this->metersFromPixels = metersFromPixels;
    }
    double getZoom() const { return metersFromPixels; }
+   /*********************************************
+ * COMPUTE DISTANCE
+ * Find the distance between two positions
+ *********************************************/
+   inline double computeDistance(const Position& pos1, const Position& pos2)
+   {
+      return sqrt((pos1.getMetersX() - pos2.getMetersX()) * (pos1.getMetersX() - pos2.getMetersX()) +
+         (pos1.getMetersY() - pos2.getMetersY()) * (pos1.getMetersY() - pos2.getMetersY()));
+   }
+
+   inline double computeDistancePx(const Position& pos1, const Position& pos2)
+   {
+      return sqrt((pos1.getPixelsX() - pos2.getPixelsX()) * (pos1.getPixelsX() - pos2.getPixelsX()) +
+         (pos1.getPixelsY() - pos2.getPixelsY()) * (pos1.getPixelsY() - pos2.getPixelsY()));
+   }
 
 private:
    double x;                 // horizontal position
@@ -69,21 +84,7 @@ private:
    static double metersFromPixels;
 };
 
-/*********************************************
- * COMPUTE DISTANCE
- * Find the distance between two positions
- *********************************************/
-inline double computeDistance(const Position& pos1, const Position& pos2)
-{
-   return sqrt((pos1.getMetersX() - pos2.getMetersX()) * (pos1.getMetersX() - pos2.getMetersX()) +
-               (pos1.getMetersY() - pos2.getMetersY()) * (pos1.getMetersY() - pos2.getMetersY()));
-}
 
-inline double computeDistancePx(const Position& pos1, const Position& pos2)
-{
-   return sqrt((pos1.getPixelsX() - pos2.getPixelsX()) * (pos1.getPixelsX() - pos2.getPixelsX()) +
-      (pos1.getPixelsY() - pos2.getPixelsY()) * (pos1.getPixelsY() - pos2.getPixelsY()));
-}
 
 // stream I/O useful for debugging
 std::ostream & operator << (std::ostream & out, const Position& pt);

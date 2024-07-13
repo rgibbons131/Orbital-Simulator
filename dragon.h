@@ -10,6 +10,7 @@
 #include "entity.h"
 #include "satellite.h"
 #include "uiDraw.h"
+#include "part.h"
 
 
 class TestDragon;
@@ -23,7 +24,6 @@ public:
    Dragon(const Position & pos,const Velocity & vel,const float & a,const bool & dead, const double& radius = 0) :
       Satellite(pos, vel, a, dead, radius) {}
    void onHit() {};
-   vector<Entity> die();
    void draw(ogstream* pgout)
    {
       pgout->drawCrewDragon(position, angle.getRadians());

@@ -247,12 +247,55 @@ void callBack(const Interface* pUI, void* p)
    //
    // perform all the game logic
 
+   // move all entities
    for (int i = 0; i < pDemo->entities.size(); i++)
    {
       pDemo->entities[i]->move(pUI);
    }
+      
+   // detect collisions
+   for (int index1 = 0; index1 < pDemo->entities.size() - 1; index1++)
+   {
+      auto entity1 = pDemo->entities[index1];
+      for (int index2 = index1 + 1; index2 < pDemo->entities.size(); index2++)
+      {
+         auto entity2 = pDemo->entities[index2];
+         if (entity1->isTouching(entity2->getPosition(), entity2->getRadius()))
+         {
+            entity1->onHit();
+            entity2->onHit();
+         }
+      }
+   }
 
+   // create new entities
+   vector<int> deadIndecies;
+   for (int index1 = 0; index1 < pDemo->entities.size(); index1++)
+   {
+      if (pDemo->entities[index1]->isDead())
+      {
+         vector<Entity *> newEntities = pDemo->entities[index1]->die();
+         deadIndecies.push_back(index1);
+         for (int index2 = 0; index2 < newEntities.size(); index2++)
+         {
+            pDemo->entities.push_back(newEntities[index2]);
+         }
+      }
+   }
+   for (int i : deadIndecies)
+   {
+      std::cout << i << "\n";
+   }
    
+
+   // kill dead entities
+   //for (int index = deadIndecies.size() - 1; index >=0; index--)
+   //{
+   //   auto itr = pDemo->entities.begin();
+   //   int dead = deadIndecies[index];
+   //   pDemo->entities.erase( itr + dead);
+   //   deadIndecies.pop_back();
+   //}
 
    Position pt;
    ogstream gout(pt);

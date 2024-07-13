@@ -18,7 +18,5 @@ public:
    Satellite() : Entity() {}
    Satellite(const Position& pos,const Velocity& vel,const float& a,const bool& dead, const double& radius = 0) : Entity(pos, vel, a, dead, radius) {}
    void onHit() { dead = true; }       // Add fragment logic here later
-   vector<Entity> die() { dead = true; return vector<Entity>(); }
-
 };
 
