@@ -12,8 +12,8 @@
 class Starlink : public Satellite
 {
 public:
-   Starlink() : Satellite() {}
-   Starlink(const Position& pos,const Velocity& vel,const float& a,const bool& dead, const double& radius = 0) :
+   Starlink() : Satellite() { this->radius = 6; }
+   Starlink(const Position& pos,const Velocity& vel,const float& a,const bool& dead, const double& radius = 6) :
       Satellite(pos, vel, a, dead, radius) {}
    void draw(ogstream* pgout)
    {

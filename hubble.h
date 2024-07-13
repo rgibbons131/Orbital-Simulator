@@ -12,8 +12,8 @@
 class Hubble : public Satellite
 {
 public:
-   Hubble() : Satellite() {}
-   Hubble(const Position& pos,const Velocity& vel,const float& a,const bool& dead, const double& radius = 0) :
+   Hubble() : Satellite() { this->radius = 10; }
+   Hubble(const Position& pos,const Velocity& vel,const float& a,const bool& dead, const double& radius = 10) :
       Satellite(pos, vel, a, dead, radius) {}
    void draw(ogstream* pgout)
    {

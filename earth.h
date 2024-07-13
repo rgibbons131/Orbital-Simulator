@@ -11,6 +11,7 @@ public:
       Position p;
       p.setMeters(0.0, 0.0);
       setPosition(p);
+      radius = 49.83;
    }
    void move(const Interface* pUI) { setAngle(getEarthRotationSpeed() + angle.getRadians()); };
    void draw(ogstream* pgout)

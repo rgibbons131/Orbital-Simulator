@@ -13,8 +13,8 @@ class DreamChaser :
     public Satellite
 {
 public:
-   DreamChaser() : Satellite(), thrust(false) {}
-   DreamChaser(const Position & pos,const Velocity & vel,const float & a,const bool & dead, const double& radius = 0) :
+   DreamChaser() : Satellite(), thrust(false) { this->radius = 10; }
+   DreamChaser(const Position & pos,const Velocity & vel,const float & a,const bool & dead, const double& radius = 10) :
       Satellite(pos, vel, a, dead, radius), thrust(false) {}
    void move(const Interface* pUI);
    void draw(ogstream* pgout)

@@ -20,8 +20,8 @@ class Dragon : public Satellite
 public:
    friend TestDragon;
 
-   Dragon() : Satellite() {}
-   Dragon(const Position & pos,const Velocity & vel,const float & a,const bool & dead, const double& radius = 0) :
+   Dragon() : Satellite() { this->radius = 7; }
+   Dragon(const Position & pos,const Velocity & vel,const float & a,const bool & dead, const double& radius = 7) :
       Satellite(pos, vel, a, dead, radius) {}
    void onHit() {};
    void draw(ogstream* pgout)

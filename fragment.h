@@ -17,8 +17,8 @@ class Fragment : public Satellite
 
 public:
    friend TestFragment;
-   Fragment() : Satellite() {}
-   Fragment(const Position& pos, const Velocity& vel, const float& a, const bool& dead, const double& radius = 0) : Satellite(pos, vel, a, dead, radius) {}
+   Fragment() : Satellite() { this->radius = 2; }
+   Fragment(const Position& pos, const Velocity& vel, const float& a, const bool& dead, const double& radius = 2) : Satellite(pos, vel, a, dead, radius) {}
    void onHit() { die(); }
    void draw(ogstream* pgout)
    {

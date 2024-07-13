@@ -172,7 +172,7 @@ public:
       //phaseStar = 0;
 
       //Ship
-      ptShip.setMetersX(-36515195.13);
+      ptShip.setMetersX(-46515215.13);
       ptShip.setMetersY(21082000.0);
       angleShip= 0.0;
 
@@ -260,6 +260,7 @@ void callBack(const Interface* pUI, void* p)
       for (int index2 = index1 + 1; index2 < pDemo->entities.size(); index2++)
       {
          auto entity2 = pDemo->entities[index2];
+         std::cout << entity2->getRadius() << "  :  " << entity1->getRadius() << "\n";
          if (entity1->isTouching(entity2->getPosition(), entity2->getRadius()))
          {
             entity1->onHit();
@@ -284,18 +285,18 @@ void callBack(const Interface* pUI, void* p)
    }
    for (int i : deadIndecies)
    {
-      std::cout << i << "\n";
+      //std::cout << i << "\n";
    }
    
 
    // kill dead entities
-   //for (int index = deadIndecies.size() - 1; index >=0; index--)
-   //{
-   //   auto itr = pDemo->entities.begin();
-   //   int dead = deadIndecies[index];
-   //   pDemo->entities.erase( itr + dead);
-   //   deadIndecies.pop_back();
-   //}
+   for (int index = deadIndecies.size() - 1; index >=0; index--)
+   {
+      auto itr = pDemo->entities.begin();
+      int dead = deadIndecies[index];
+      pDemo->entities.erase( itr + dead);
+      deadIndecies.pop_back();
+   }
 
    Position pt;
    ogstream gout(pt);
