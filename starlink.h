@@ -1,3 +1,11 @@
+/***********************************************************************
+ * Heaader File:
+ *    Starlink : Starlink satellite
+ * Author:
+ *    Taemour, Richard, Aria
+ * Summary:
+ *    Represents the starlink satellite entity
+ ************************************************************************/
 #pragma once
 #include "satellite.h"
 #include "uiDraw.h"

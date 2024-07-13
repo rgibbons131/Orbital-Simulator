@@ -1,3 +1,11 @@
+/***********************************************************************
+ * Heaader File:
+ *    Direction : direction of the object
+ * Author:
+ *    Taemour, Richard, Aria
+ * Summary:
+ *    Maintains the state of the direction/orientation of the entity
+ ************************************************************************/
 #pragma once
 #include "physics.h"
 

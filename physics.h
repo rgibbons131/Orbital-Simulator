@@ -1,3 +1,11 @@
+/***********************************************************************
+ * Header File:
+ *    Physics : The physics class
+ * Author:
+ *    Taemour, Richard, Aria
+ * Summary:
+ *    handles and represents physics of entities within the simulation.
+ ************************************************************************/
 #pragma once
 #define _USE_MATH_DEFINES
 #include <cmath>

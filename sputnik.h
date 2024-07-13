@@ -1,3 +1,11 @@
+/***********************************************************************
+ * Heaader File:
+ *    Sputnik : Sputik satellite
+ * Author:
+ *    Taemour, Richard, Aria
+ * Summary:
+ *    Represents the Sputnik satellite entity
+ ************************************************************************/
 #pragma once
 #include "satellite.h"
 #include "uiDraw.h"

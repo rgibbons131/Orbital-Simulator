@@ -1,3 +1,11 @@
+/***********************************************************************
+ * Header File:
+ *    Entity : The entity class
+ * Author:
+ *    Taemour, Richard, Aria
+ * Summary:
+ *    Represents entities within the simulation.
+ ************************************************************************/
 #pragma once
 #include "position.h"
 #include "velocity.h"

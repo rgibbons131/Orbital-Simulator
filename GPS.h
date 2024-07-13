@@ -1,3 +1,11 @@
+/***********************************************************************
+ * Heaader File:
+ *    GPS : GPS Satellite
+ * Author:
+ *    Taemour, Richard, Aria
+ * Summary:
+ *    Represents the GPS satellite entity
+ ************************************************************************/
 #pragma once
 #include "satellite.h"
 #include "uiDraw.h"

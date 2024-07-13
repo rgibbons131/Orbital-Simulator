@@ -1,3 +1,11 @@
+/***********************************************************************
+ * Header File:
+ *    DreamChaser : The dream chaser class
+ * Author:
+ *    Taemour, Richard, Aria
+ * Summary:
+ *    Represents the dream chaser entity within the simulation
+ ************************************************************************/
 #pragma once
 #include "satellite.h"
 #include "uiDraw.h"

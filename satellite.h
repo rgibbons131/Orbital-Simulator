@@ -1,3 +1,11 @@
+/***********************************************************************
+ * Header File:
+ *    Satellite : The satellite class
+ * Author:
+ *    Taemour, Richard, Aria
+ * Summary:
+ *    Represents the satellite entities within the simulation.
+ ************************************************************************/
 #pragma once
 #include "entity.h"
 class Satellite : public Entity

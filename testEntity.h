@@ -1,3 +1,11 @@
+/***********************************************************************
+ * Header File:
+ *    Test Entity : test the entity class
+ * Author:
+ *    Richard, Taemour, Aria
+ * Summary:
+ *    All the unit tests for Entity
+ ************************************************************************/
 #pragma once
 #include "entity.h"
 #include "position.h"

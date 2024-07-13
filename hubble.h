@@ -1,3 +1,11 @@
+/***********************************************************************
+ * Heaader File:
+ *    Hubble : Hubble Satellite
+ * Author:
+ *    Taemour, Richard, Aria
+ * Summary:
+ *    Represents the Hubble satellite entity
+ ************************************************************************/
 #pragma once
 #include "satellite.h"
 #include "uiDraw.h"

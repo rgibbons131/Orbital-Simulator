@@ -1,3 +1,11 @@
+/***********************************************************************
+ * Heaader File:
+ *    Dragon : Dragon satellite
+ * Author:
+ *    Taemour, Richard, Aria
+ * Summary:
+ *    Represents the Space X Crew Dragon satellite entity
+ ************************************************************************/
 #pragma once
 #include "satellite.h"
 #include "uiDraw.h"
