@@ -20,8 +20,8 @@ class Dragon : public Satellite
 public:
    friend TestDragon;
 
-   Dragon() : Satellite() { this->radius = 7; }
-   Dragon(const Position & pos,const Velocity & vel,const float & a,const bool & dead, const double& radius = 7) :
+   Dragon() : Satellite() { this->radius = 7.0; }
+   Dragon(const Position & pos,const Velocity & vel,const float & a,const bool & dead, const double& radius = 7.0) :
       Satellite(pos, vel, a, dead, radius) {}
    vector<Entity*> die();
    void draw(ogstream* pgout)
