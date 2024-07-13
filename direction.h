@@ -10,6 +10,8 @@
 #include "physics.h"
 
 class TestEntity;
+class TestSatellite;
+class TestDragon;
 
 class Direction
 {
@@ -25,6 +27,8 @@ protected:
 	
 public:
    friend TestEntity;
+   friend TestSatellite;
+   friend TestDragon;
    double normalize(const double & radian) const;
    bool closeEnough(const double & value,const double & test,const double & tolerance) {
 	   double difference = value - test;

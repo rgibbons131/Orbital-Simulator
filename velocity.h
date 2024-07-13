@@ -14,6 +14,8 @@
 #endif /* onevelocity_hpp */
 
 class TestEntity;
+class TestSatellite;
+class TestDragon;
 
  /***********************************************************
   * VELOCITY
@@ -48,6 +50,8 @@ protected:
 public:
 
    friend TestEntity;
+   friend TestSatellite;
+   friend TestDragon;
     // Constructors
     Velocity() : dx(0.0), dy(0.0) {}
     Velocity(double dx_, double dy_) : dx(dx_), dy(dy_) {}
