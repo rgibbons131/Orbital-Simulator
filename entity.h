@@ -7,6 +7,7 @@
  *    Represents entities within the simulation.
  ************************************************************************/
 #pragma once
+#include <vector>
 #include "position.h"
 #include "velocity.h"
 #include "direction.h"
@@ -38,7 +39,10 @@ public:
    Entity& operator= (const Entity& rhs);
 
    virtual void onHit() {}
-   virtual void die() {}
+   virtual vector<Entity> die() {
+      vector<Entity> v;
+      return v; 
+   }
    virtual void draw(ogstream* pgout) {}
    virtual void move(const Interface* pUI);
    
