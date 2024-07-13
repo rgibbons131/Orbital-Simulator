@@ -3,9 +3,9 @@
 #include "fragment.h"
 #include "uiDraw.h"
 
-vector<Entity> Starlink::die(ogstream* pgout)
+vector<Entity*> Starlink::die()
 {
-   vector<Entity> vec;
+   vector<Entity*> vec;
    double bodyRad = 2.0;
    double arrayRad = 4.0;
 
@@ -18,10 +18,10 @@ vector<Entity> Starlink::die(ogstream* pgout)
    Fragment linkFrag1(position, velocity, 180, false);
    Fragment linkFrag2(position, velocity, 0, false);
 
-   vec.push_back(body);
-   vec.push_back(link);
-   vec.push_back(linkFrag1);
-   vec.push_back(linkFrag2);
+   vec.push_back(&body);
+   vec.push_back(&link);
+   vec.push_back(&linkFrag1);
+   vec.push_back(&linkFrag2);
 
    dead = true;
    return vec;
