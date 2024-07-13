@@ -19,21 +19,21 @@ protected:
    double dirDx = 0;
    double dirDy = 0;
 	
-   double normalizeDegrees(double radian) const;
-	double convertToDegrees(double radians) const;
-	double convertToRadians(double degrees) const;
+   double normalizeDegrees(const double & radian) const;
+	double convertToDegrees(const double & radians) const;
+	double convertToRadians(const double & degrees) const;
 	
 public:
    friend TestEntity;
-   double normalize(double radian) const;
-   bool closeEnough(double value, double test, double tolerance) {
+   double normalize(const double & radian) const;
+   bool closeEnough(const double & value,const double & test,const double & tolerance) {
 	   double difference = value - test;
 		return ((difference >= -tolerance) && (difference <= tolerance));
 	}
 
    // Constructors
    Direction() : radians(0.0) {}
-   Direction(double rad) : radians(normalize(rad)){}
+   Direction(const double & rad) : radians(normalize(rad)){}
    // Getters
    double getRadians() const { return radians; }
    double getDegrees() const { return radians * (180.0 / M_PI); }
@@ -51,10 +51,10 @@ public:
       radians = normalize(radians + M_PI);
    }
    // Setters
-   void setRadians(double rad) { radians = normalize(rad); }
-   void setDegrees(double deg) { radians = normalize(deg * (M_PI / 180.0)); }    
-   void add(double increment)  { radians = normalize(radians + increment);    }
-   void setDxDy(double dx, double dy) {
+   void setRadians(const double & rad) { radians = normalize(rad); }
+   void setDegrees(const double & deg) { radians = normalize(deg * (M_PI / 180.0)); }    
+   void add(const double & increment)  { radians = normalize(radians + increment);    }
+   void setDxDy(const double & dx, const double & dy) {
       radians = atan2(dy, dx);
       this->dirDx = dx;
       this->dirDy = dy;
