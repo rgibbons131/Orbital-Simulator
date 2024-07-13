@@ -271,17 +271,23 @@ void callBack(const Interface* pUI, void* p)
 
    // create new entities from collision
    vector<int> deadIndecies;
+   vector<Entity*> newEntities;
    for (int index1 = 0; index1 < pDemo->entities.size(); index1++)
    {
       if (pDemo->entities[index1]->isDead())
       {
-         vector<Entity *> newEntities = pDemo->entities[index1]->die();
+         vector<Entity *> currentEnt = pDemo->entities[index1]->die();
          deadIndecies.push_back(index1);
-         for (int index2 = 0; index2 < newEntities.size(); index2++)
+         for (int index2 = 0; index2 < currentEnt.size(); index2++)
          {
-            pDemo->entities.push_back(newEntities[index2]);
+            newEntities.push_back(currentEnt[index2]);
          }
       }
+   }
+
+   for (int index2 = 0; index2 < newEntities.size(); index2++)
+   {
+      pDemo->entities.push_back(newEntities[index2]);
    }
 
    // create bullets

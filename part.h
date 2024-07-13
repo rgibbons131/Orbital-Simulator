@@ -12,38 +12,44 @@
 class Part : public Satellite
 {
 public:
-   Part(void (ogstream::* drawFunction)(const Position& center,double rotation), const double& a, const double& radius) : Satellite() 
+   Part( const double& a, const double& radius, const Position& pos) : Satellite()
    { 
-      drawFunc = drawFunction;
+      this->setPosition(pos);
       this->position.addPixelsX(getHorizontalAccel(a, 4));
       this->position.addPixelsY(getVerticalAccel(a, 4));
       double kick = random(5000, 9000);
       this->velocity.addDx(getHorizontalAccel(a, kick));
       this->velocity.addDy(getVerticalAccel(a, kick));
-   };
-   void (ogstream::* drawFunc)(const Position& center,double rotation);
-
-   Part(void (ogstream::* drawFunctionOffset)(const Position& center, double rotation, const Position& offset), const double& a, const double& radius) : Satellite()
-   { 
-      drawFuncOffset = drawFunctionOffset; 
-      this->position.addPixelsX(getHorizontalAccel(a, 4));
-      this->position.addPixelsY(getVerticalAccel(a, 4));
-      double kick = random(5000, 9000);
-      this->velocity.addDx(getHorizontalAccel(a, kick));
-      this->velocity.addDy(getVerticalAccel(a, kick));
-   };
-   void (ogstream::* drawFuncOffset)(const Position& center, double rotation, const Position& offset);
-
-   void draw(ogstream* pgout)
-   {
-      if (drawFunc)
-      {
-         (pgout->*drawFunc)(position, angle.getRadians());
-      }
-      else if (drawFuncOffset)
-      {
-         (pgout->*drawFuncOffset)(position, angle.getRadians(), Position());
-      }
    };
 };
 
+class GPSRight : public Part
+{
+public:
+   GPSRight(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos){}
+   void draw(ogstream* gout)
+   {
+      gout->drawGPSRight(position, angle.getRadians());
+   }
+
+};
+
+class GPSLeft : public Part
+{
+public:
+   GPSLeft(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) {}
+   void draw(ogstream* gout)
+   {
+      gout->drawGPSLeft(position, angle.getRadians());
+   }
+};
+ 
+class GPSCenter : public Part
+{
+public:
+   GPSCenter(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) {}
+   void draw(ogstream* gout)
+   {
+      gout->drawGPSCenter(position, angle.getRadians());
+   }
+};
