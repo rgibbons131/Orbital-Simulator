@@ -69,7 +69,6 @@ private:
       vector<Entity*> result = drg.die();
       //VERIFY
       assertUnit(result.size() == 5);
-
       //TEARDOWN
    }
 };
