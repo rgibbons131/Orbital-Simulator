@@ -1,6 +1,6 @@
 /***********************************************************************
  * Header File:
- *    Physics : The physics class
+ *    Physics : Physics within the simulation
  * Author:
  *    Taemour, Richard, Aria
  * Summary:
