@@ -260,7 +260,6 @@ void callBack(const Interface* pUI, void* p)
       for (int index2 = index1 + 1; index2 < pDemo->entities.size(); index2++)
       {
          auto entity2 = pDemo->entities[index2];
-         std::cout << entity2->getRadius() << "  :  " << entity1->getRadius() << "\n";
          if (entity1->isTouching(entity2->getPosition(), entity2->getRadius()))
          {
             entity1->onHit();

@@ -12,6 +12,10 @@
 class TestEntity;
 class TestSatellite;
 class TestDragon;
+class TestStarlink;
+class TestSputnik;
+class TestHubble;
+class TestGPS;
 
 class Direction
 {
@@ -29,6 +33,11 @@ public:
    friend TestEntity;
    friend TestSatellite;
    friend TestDragon;
+   friend TestStarlink;
+   friend TestSputnik;
+   friend TestHubble;
+   friend TestGPS;
+
    double normalize(const double & radian) const;
    bool closeEnough(const double & value,const double & test,const double & tolerance) {
 	   double difference = value - test;

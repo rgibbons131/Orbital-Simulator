@@ -16,6 +16,10 @@
 class TestEntity;
 class TestSatellite;
 class TestDragon;
+class TestStarlink;
+class TestSputnik;
+class TestHubble;
+class TestGPS;
 
  /***********************************************************
   * VELOCITY
@@ -52,6 +56,11 @@ public:
    friend TestEntity;
    friend TestSatellite;
    friend TestDragon;
+   friend TestStarlink;
+   friend TestSputnik;
+   friend TestHubble;
+   friend TestGPS;
+
     // Constructors
     Velocity() : dx(0.0), dy(0.0) {}
     Velocity(double dx_, double dy_) : dx(dx_), dy(dy_) {}

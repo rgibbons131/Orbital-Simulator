@@ -20,7 +20,10 @@ class Velocity;
 class TestEntity;
 class TestSatellite;
 class TestDragon;
-
+class TestStarlink;
+class TestSputnik;
+class TestHubble;
+class TestGPS;
 /*********************************************
  * Position
  * A single position on the field in Meters  
@@ -32,6 +35,10 @@ public:
    friend TestEntity;
    friend TestSatellite;
    friend TestDragon;
+   friend TestStarlink;
+   friend TestSputnik;
+   friend TestHubble;
+   friend TestGPS;
    
    // constructors
    Position()            : x(0.0), y(0.0)  {}

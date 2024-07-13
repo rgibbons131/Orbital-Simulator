@@ -1,17 +1,17 @@
 /***********************************************************************
  * Header File:
- *    Test Dragon : test the dragon class
+ *    Test Starlink : test the Starlinkclass
  * Author:
  *    Richard, Taemour, Aria
  * Summary:
- *    All the unit tests for Dragon
+ *    All the unit tests for Starlink
  ************************************************************************/
 #pragma once
 #include "unitTest.h"
-#include "dragon.h"
+#include "starlink.h"
 #include "part.h"
 #include "fragment.h"
-class TestDragon : public UnitTest
+class TestStarlink : public UnitTest
 {
 public:
    void run()
@@ -19,13 +19,13 @@ public:
       testDefaultConstructor();
       testConstructorStandard();
       testDie();
-      report("Dragon");
+      report("Starlink");
    }
 private:
    void testDefaultConstructor()
    {
       //SETUP
-      Dragon drg;
+      Starlink drg;
       //EXERCISE
 
       //VERIFY
@@ -34,7 +34,7 @@ private:
       assertUnit(drg.velocity.dy == 0.0);
       assertUnit(drg.position.x == 0.0);
       assertUnit(drg.position.y == 0.0);
-      assertUnit(drg.radius == 7.0);
+      assertUnit(drg.radius == 6.0);
 
       //TEARDOWN
    }
@@ -48,7 +48,7 @@ private:
       double radius = 0.0;
 
       //EXERCISE
-      Dragon drg(pos, vel, angle, dead, radius);
+      Starlink drg(pos, vel, angle, dead, radius);
       //VERIFY
       assertUnit(drg.angle.radians == 0.0);
       assertUnit(drg.velocity.dx == 0.0);
@@ -63,13 +63,12 @@ private:
    void testDie()
    {
       //SETUP
-      Dragon drg;
+      Starlink drg;
 
       //EXERCISE
       vector<Entity*> result = drg.die();
       //VERIFY
-      assertUnit(result.size() == 5);
+      assertUnit(result.size() == 4);
       //TEARDOWN
    }
 };
-

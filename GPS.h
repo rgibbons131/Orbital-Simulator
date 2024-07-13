@@ -10,10 +10,12 @@
 #include "satellite.h"
 #include "uiDraw.h"
 
+class TestGPS;
 
 class GPS : public Satellite
 {
 public:
+   friend TestGPS;
    GPS() : Satellite() 
    {
       this->radius = 12;
