@@ -18,7 +18,7 @@ class Fragment : public Entity
 public:
    friend TestFragment;
    Fragment() : Entity() {}
-   Fragment(const Position& pos, const Velocity& vel, const float& a, const bool& dead) : Entity(pos, vel, a, dead) {}
+   Fragment(const Position& pos, const Velocity& vel, const float& a, const bool& dead, const double& radius = 0) : Entity(pos, vel, a, dead, radius) {}
    void onHit() { die(); }
    vector<Entity> die() { dead = true; return vector<Entity>(); }
    void draw(ogstream* pgout)
