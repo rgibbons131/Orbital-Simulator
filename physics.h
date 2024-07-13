@@ -35,7 +35,7 @@ const float GRAVITY = 9.80665;
 * height - Height above the surface of the earth
 * Calculates the acceleration do to gravity at a given height
 ******************************************************************/
- inline float getGravity(float height)
+ inline float getGravity(const float& height)
 {
    return GRAVITY * (EARTH_RADIUS / (EARTH_RADIUS + height)) * (EARTH_RADIUS / (EARTH_RADIUS + height));
 }
@@ -46,7 +46,7 @@ const float GRAVITY = 9.80665;
 * y - vertical position
 * Calculates the distance above the surface of the earth
 ******************************************************************/
- inline float getHeightAboveEarth(float x, float y)
+ inline float getHeightAboveEarth(const float& x,const float& y)
 {
    return sqrt((x * x) + (y * y)) - EARTH_RADIUS;
 }
@@ -57,7 +57,7 @@ const float GRAVITY = 9.80665;
 * y - vertical position
 * Calculates the direction of the earth from the object
 ******************************************************************/
- inline float getDirectionOfGravityPull(float x, float y)
+ inline float getDirectionOfGravityPull(const float& x,const float& y)
 {
    return atan2(-x,-y);
 }
@@ -70,7 +70,7 @@ const float GRAVITY = 9.80665;
 * relative to X. This function can be used to find the horizontal
 * component of any angled vector.
 ******************************************************************/
- inline float getHorizontalAccel(float angle, float accel)
+ inline float getHorizontalAccel(const float& angle,const float& accel)
 {
    return accel * sin(angle); // In radians
 }
@@ -83,7 +83,7 @@ const float GRAVITY = 9.80665;
 * relative to Y. This function can be used to find the vertical
 * component of any angled vector.
 ******************************************************************/
- inline float getVerticalAccel(float angle, float accel)
+ inline float getVerticalAccel(const float& angle,const float& accel)
 {
    return accel * cos(angle); // In radians
 }
@@ -97,7 +97,7 @@ const float GRAVITY = 9.80665;
  * with velocity, or velocity with acceleration
  ****************************************************/
 
- inline float getChangedMagnitude(float so, float v, float t) // also used for velocity components
+ inline float getChangedMagnitude(const float& so,const float& v,const float& t) // also used for velocity components
 {
    return so + v * t;
 }
@@ -112,7 +112,7 @@ const float GRAVITY = 9.80665;
 * it's current movement. It is meant to be used from second to
 * second
 ******************************************************************/
- inline float getDistance(float pos, float velocity, float time, float accel)
+ inline float getDistance(const float& pos,const float& velocity,const float& time,const float& accel)
 {
    return getChangedMagnitude(pos, velocity, time) + accel * .5 * time * time;
 }

@@ -12,8 +12,7 @@ class Satellite : public Entity
 {
 public:
    Satellite() : Entity() {}
-   Satellite(Position pos, Velocity vel, float a, bool dead) : Entity(pos, vel, a, dead) {}
-   Satellite(Satellite& rhs);
+   Satellite(const Position& pos,const Velocity& vel,const float& a,const bool& dead) : Entity(pos, vel, a, dead) {}
    void onHit() {die();}       // Add fragment logic here later
    void die()   {dead = true;}
 

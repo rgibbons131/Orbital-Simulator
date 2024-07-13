@@ -13,9 +13,8 @@ class Sputnik : public Satellite
 {
 public:
    Sputnik() : Satellite() {}
-   Sputnik(Position pos, Velocity vel, float a, bool dead) :
+   Sputnik(const Position& pos,const Velocity& vel,const float& a,const bool& dead) :
       Satellite(pos, vel, a, dead) {}
-   Sputnik(Sputnik& rhs);
    void draw(ogstream* pgout)
    {
       pgout->drawSputnik(position, angle.getRadians());
