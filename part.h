@@ -15,7 +15,7 @@ class Part : public Satellite
 public:
    Part( const double& a, const double& radius, const Position& pos) : Satellite()
    { 
-      int OFF = 10;
+      int OFF = 20;
       this->setPosition(pos);
       this->position.addPixelsX(getHorizontalAccel(a, OFF));
       this->position.addPixelsY(getVerticalAccel(a, OFF));
