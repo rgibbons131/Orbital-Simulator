@@ -9,14 +9,16 @@
 #pragma once
 #include "satellite.h"
 #include "uiDraw.h"
+
 class Part : public Satellite
 {
 public:
    Part( const double& a, const double& radius, const Position& pos) : Satellite()
    { 
+      int OFF = 10;
       this->setPosition(pos);
-      this->position.addPixelsX(getHorizontalAccel(a, 4));
-      this->position.addPixelsY(getVerticalAccel(a, 4));
+      this->position.addPixelsX(getHorizontalAccel(a, OFF));
+      this->position.addPixelsY(getVerticalAccel(a, OFF));
       double kick = random(5000, 9000);
       this->velocity.addDx(getHorizontalAccel(a, kick));
       this->velocity.addDy(getVerticalAccel(a, kick));
@@ -26,7 +28,7 @@ public:
 class GPSRight : public Part
 {
 public:
-   GPSRight(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos){}
+   GPSRight(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos){ this->radius = 8; }
    void draw(ogstream* gout)
    {
       gout->drawGPSRight(position, angle.getRadians());
@@ -37,7 +39,7 @@ public:
 class GPSLeft : public Part
 {
 public:
-   GPSLeft(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) {}
+   GPSLeft(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) { this->radius = 8; }
    void draw(ogstream* gout)
    {
       gout->drawGPSLeft(position, angle.getRadians());
@@ -47,7 +49,7 @@ public:
 class GPSCenter : public Part
 {
 public:
-   GPSCenter(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) {}
+   GPSCenter(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) { this->radius = 7; }
    void draw(ogstream* gout)
    {
       gout->drawGPSCenter(position, angle.getRadians());
@@ -57,7 +59,7 @@ public:
 class HubbleTelescope : public Part
 {
 public:
-   HubbleTelescope(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) {}
+   HubbleTelescope(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) { this->radius = 10; }
    void draw(ogstream* gout)
    {
       gout->drawHubbleTelescope(position, angle.getRadians());
@@ -67,7 +69,7 @@ public:
 class HubbleComputer : public Part
 {
 public:
-   HubbleComputer(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) {}
+   HubbleComputer(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) { this->radius = 7; }
    void draw(ogstream* gout)
    {
       gout->drawHubbleComputer(position, angle.getRadians());
@@ -77,7 +79,7 @@ public:
 class HubbleLeft : public Part
 {
 public:
-   HubbleLeft(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) {}
+   HubbleLeft(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) { this->radius = 8; }
    void draw(ogstream* gout)
    {
       gout->drawHubbleLeft(position, angle.getRadians());
@@ -87,7 +89,7 @@ public:
 class HubbleRight : public Part
 {
 public:
-   HubbleRight(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) {}
+   HubbleRight(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) { this->radius = 8; }
    void draw(ogstream* gout)
    {
       gout->drawHubbleRight(position, angle.getRadians());
@@ -97,7 +99,7 @@ public:
 class DragonCenter : public Part
 {
 public:
-   DragonCenter(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) {}
+   DragonCenter(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) { this->radius = 6; }
    void draw(ogstream* gout)
    {
       gout->drawCrewDragonCenter(position, angle.getRadians());
@@ -107,7 +109,7 @@ public:
 class DragonLeft : public Part
 {
 public:
-   DragonLeft(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) {}
+   DragonLeft(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) { this->radius = 6; }
    void draw(ogstream* gout)
    {
       gout->drawCrewDragonLeft(position, angle.getRadians());
@@ -117,7 +119,7 @@ public:
 class DragonRight : public Part
 {
 public:
-   DragonRight(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) {}
+   DragonRight(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) { this->radius = 6; }
    void draw(ogstream* gout)
    {
       gout->drawCrewDragonRight(position, angle.getRadians());
@@ -127,7 +129,7 @@ public:
 class StarLinkBody : public Part
 {
 public:
-   StarLinkBody(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) {}
+   StarLinkBody(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) { this->radius = 2; }
    void draw(ogstream* gout)
    {
       gout->drawStarlinkBody(position, angle.getRadians());
@@ -137,7 +139,7 @@ public:
 class StarLinkArray : public Part
 {
 public:
-   StarLinkArray(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) {}
+   StarLinkArray(const double& a, const double& radius, const Position& pos) : Part(a, radius, pos) { this->radius = 4; }
    void draw(ogstream* gout)
    {
       gout->drawStarlinkArray(position, angle.getRadians());
