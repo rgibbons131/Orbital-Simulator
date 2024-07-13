@@ -17,12 +17,16 @@ class Fragment : public Satellite
 
 public:
    friend TestFragment;
-   Fragment() : Satellite() { this->radius = 2; }
-   Fragment(const Position& pos, const Velocity& vel, const float& a, const bool& dead, const double& radius = 2) : Satellite(pos, vel, a, dead, radius) {}
+   Fragment() : Satellite(), lifespan(random(50, 100)), spin(random(0.0, 6.2)) { this->radius = 2; }
+   Fragment(const Position& pos, const Velocity& vel, const float& a, const bool& dead, const double& radius = 2) : Satellite(pos, vel, a, dead, radius), lifespan(random(50,100)), spin(random(0.0, 6.2)) {}
    void onHit() { die(); }
    void draw(ogstream* pgout)
    {
       pgout->drawFragment(position, angle.getRadians());
    }
+   void move(const Interface* pUI);
+private:
+   int lifespan;
+   double spin;
 };
 
