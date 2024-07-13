@@ -8,9 +8,13 @@
  ************************************************************************/
 #pragma once
 #include "entity.h"
+
+class TestSatellite;
+
 class Satellite : public Entity
 {
 public:
+   friend TestSatellite;
    Satellite() : Entity() {}
    Satellite(const Position& pos,const Velocity& vel,const float& a,const bool& dead) : Entity(pos, vel, a, dead) {}
    void onHit() { dead = true; }       // Add fragment logic here later
