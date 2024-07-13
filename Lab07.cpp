@@ -26,6 +26,7 @@
 #include "sputnik.h"
 #include "hubble.h"
 #include "dreamChaser.h"
+#include "earth.h"
 using namespace std;
 
 /*************************************************************************
@@ -183,8 +184,7 @@ public:
 
       entities.push_back(&ship);
 
-      // Initial velocity
-      angleEarth = 0.0;
+      entities.push_back(&earth);
    }
    float velocityX;
    float velocityY;
@@ -212,13 +212,13 @@ public:
    Hubble   hubble;
    Dragon   dragon;
    DreamChaser ship;
+   Earth earth;
    vector<Entity *> entities;
 
 
    unsigned char phaseStar;
 
    double angleShip;
-   double angleEarth;
    double angleGPS1;
    double angleGPS2;
    double angleGPS3;
@@ -246,11 +246,6 @@ void callBack(const Interface* pUI, void* p)
 
    //
    // perform all the game logic
-   //
-
-   // rotate the earth
-   auto earthRotationSpeed = getEarthRotationSpeed();
-   pDemo->angleEarth += earthRotationSpeed;
 
    for (int i = 0; i < pDemo->entities.size(); i++)
    {
@@ -262,10 +257,7 @@ void callBack(const Interface* pUI, void* p)
    Position pt;
    ogstream gout(pt);
 
-
-   // draw the earth
-   pt.setMeters(0.0, 0.0);
-   gout.drawEarth(pt, pDemo->angleEarth);
+   // draw all Entities
    for (int i = 0; i < pDemo->entities.size(); i++)
    {
       pDemo->entities[i]->draw(&gout);
