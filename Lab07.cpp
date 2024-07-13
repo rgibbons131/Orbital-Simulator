@@ -245,21 +245,6 @@ void callBack(const Interface* pUI, void* p)
    Demo* pDemo = (Demo*)p;
 
    //
-   // accept input
-   //
-
-   // move by a little
-   //if (pUI->isUp())
-   //   pDemo->ptShip.addPixelsY(1.0);
-   //if (pUI->isDown())
-   //   pDemo->ptShip.addPixelsY(-1.0);
-   //if (pUI->isLeft())
-   //   pDemo->ptShip.addPixelsX(-1.0);
-   //if (pUI->isRight())
-   //   pDemo->ptShip.addPixelsX(1.0);
-
-
-   //
    // perform all the game logic
    //
 
@@ -272,34 +257,7 @@ void callBack(const Interface* pUI, void* p)
       pDemo->entities[i]->move(pUI);
    }
 
-   // Calculate height above Earth
-   /*
-   float height = getHeightAboveEarth(pDemo->gps.getPosition().getMetersX(), pDemo->gps.getPosition().getMetersY());
-
    
-   // Calculate gravitational acceleration
-   float gravity = getGravity(height);
-   float gravityDirection = getDirectionOfGravityPull(pDemo->gps.getPosition().getMetersX(), pDemo->gps.getPosition().getMetersY());
-   float accelX = getHorizontalAccel(gravityDirection, gravity);
-   float accelY = getVerticalAccel(gravityDirection, gravity);
-
-   // Update velocity
-   Velocity newV = pDemo->gps.getVelocity();
-   newV.addDx(accelX * TPF);
-   newV.addDy(accelY * TPF);
-   pDemo->gps.setVelocity(newV);
-
-   // Update position
-   float newX = pDemo->gps.getPosition().getMetersX() + pDemo->gps.getVelocity().getDx() * TPF;
-   float newY = pDemo->gps.getPosition().getMetersY() + pDemo->gps.getVelocity().getDy() * TPF;
-   Position newPosition = Position(newX, newY);;
-
-   pDemo->gps.setPosition(newPosition);
-   */
-
-   //
-   // draw everything
-   //
 
    Position pt;
    ogstream gout(pt);
