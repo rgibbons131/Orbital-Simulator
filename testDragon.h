@@ -58,15 +58,16 @@ private:
 
       //TEARDOWN
    }
-   void testOnHit()
+   void testDie()
    {
       //SETUP
       Dragon drg;
 
       //EXERCISE
-      drg.onHit();
+      vector<Entity*> result = drg.die();
       //VERIFY
-      assertUnit(drg.dead == true);
+      assertUnit(result.size() == 5);
+      assertUnit(result[0]. == &ogstream::drawCrewDragonCenter);
       //TEARDOWN
    }
 };

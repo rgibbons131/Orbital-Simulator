@@ -26,6 +26,5 @@ vector<Entity*> Dragon::die()
    vec.push_back(&dragFrag1);
    vec.push_back(&dragFrag2);
 
-   dead = true;
    return vec;
 }

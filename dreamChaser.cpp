@@ -10,6 +10,8 @@ void DreamChaser::move(const Interface* pUI)
       angle.add(-.1);
    if (pUI->isRight())
       angle.add(.1);
+   if (pUI->isSpace())
+      shooting = true;
 
    float height = getHeightAboveEarth(position.getMetersX(), position.getMetersY());
 
