@@ -20,7 +20,7 @@ public:
    Fragment() : Entity() {}
    Fragment(const Position& pos, const Velocity& vel, const float& a, const bool& dead) : Entity(pos, vel, a, dead) {}
    void onHit() { die(); }
-   void die() { dead = true; }
+   vector<Entity> die() { dead = true; return vector<Entity>(); }
    void draw(ogstream* pgout)
    {
       pgout->drawFragment(position, angle.getRadians());
