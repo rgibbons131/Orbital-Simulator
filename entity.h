@@ -26,8 +26,8 @@ public:
     
    friend TestEntity;
    Entity() : position(Position(0.0, 0.0)), velocity(Velocity(0.0, 0.0)), angle(0.0), dead(false), radius(0.0){}
-   Entity(const Position & pos,const Velocity & vel,const float & a,const bool & dead, const double & radius) : 
-      position(pos), velocity(vel), angle(a), dead(dead){}
+   Entity(const Position & pos,const Velocity & vel,const float & a,const bool & dead, const double & radius=0) : 
+      position(pos), velocity(vel), angle(a), dead(dead), radius(radius){}
    Entity(const Entity& rhs);
    Position getPosition() const { return position; }
    Velocity getVelocity() const { return velocity; }
