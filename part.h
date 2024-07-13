@@ -12,11 +12,14 @@
 class Part : public Satellite
 {
 public:
-   Part(void (*drawFunction)(const Position& center,double rotation), const double& radius) : Satellite() { drawFunc = drawFunction;};
-   void (*drawFunc)(const Position& center,double rotation);
+   Part(void (ogstream::* drawFunction)(const Position& center,double rotation), const double& radius) : Satellite() { drawFunc = drawFunction;};
+   void (ogstream::* drawFunc)(const Position& center,double rotation);
    void draw(ogstream* pgout)
    {
-      drawFunc(position, angle.getRadians());
+      if (drawFunc)
+      {
+         (pgout->*drawFunc)(position, angle.getRadians());
+      }
    };
 };
 
