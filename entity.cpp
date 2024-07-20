@@ -30,14 +30,16 @@ Entity& Entity::operator=(const Entity& rhs)
 void Entity::move(const Interface* pUI)
 {
    float height = getHeightAboveEarth(position.getMetersX(), position.getMetersY());
-   statusUpdate();
+   statusUpdate(pUI);
 
    // Calculate gravitational acceleration
    float gravity = getGravity(height);
    float gravityDirection = getDirectionOfGravityPull(position.getMetersX(), position.getMetersY());
-   float accelX = getHorizontalAccel(gravityDirection, gravity);
-   float accelY = getVerticalAccel(gravityDirection, gravity);
+   vector<float>* accel = getAccel(gravity, gravityDirection);
 
+   float accelX = accel->operator[](0);
+   float accelY = accel->operator[](1);
+   delete accel;
    // Update velocity
    velocity.addDx(accelX * TPF / 2);
    velocity.addDy(accelY * TPF / 2);

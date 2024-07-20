@@ -17,7 +17,7 @@ public:
    DreamChaser() : Satellite(), thrust(false) { this->radius = 10; }
    DreamChaser(const Position & pos,const Velocity & vel,const float & a,const bool & dead, const double& radius = 10) :
       Satellite(pos, vel, a, dead, radius), thrust(false) {}
-   void move(const Interface* pUI);
+   //void move(const Interface* pUI);
    void draw(ogstream* pgout)
    {
       pgout->drawShip(position, angle.getRadians(), thrust);
@@ -40,6 +40,11 @@ public:
       Bullet* bullet = new Bullet(p,v,angle.getRadians(),false);
       return bullet;
    }
+
+protected:
+   virtual void statusUpdate(const Interface* pUI);
+   virtual vector<float>* getAccel(float gravity, float gravityDirection);
+
 private:
    bool thrust;
    bool shooting;

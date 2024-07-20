@@ -43,16 +43,24 @@ public:
    Entity& operator= (const Entity& rhs);
 
    virtual void onHit() { dead = true; }
-   virtual vector<Entity *> die() {
-      vector<Entity *> v;
-      return v; 
+   virtual vector<Entity*> die() {
+      vector<Entity*> v;
+      return v;
    }
-   virtual void statusUpdate() {}
    virtual void draw(ogstream* pgout) {}
    virtual void move(const Interface* pUI);
    
 
 protected:
+
+   virtual void statusUpdate(const Interface* pUI) {}
+   virtual vector<float>* getAccel(float gravity, float gravityDirection)
+   {
+      float accelX = getHorizontalAccel(gravityDirection, gravity);
+      float accelY = getVerticalAccel(gravityDirection, gravity);
+      vector<float>* acel = new vector<float> { accelX, accelY };
+      return acel;
+   }
 
    bool     dead;
    Position  position;
