@@ -1,9 +1,17 @@
+/***********************************************************************
+ * Header File:
+ *    Star : The star class
+ * Author:
+ *    Taemour, Richard, Aria
+ * Summary:
+ *    Represents a single star in the simulator
+ ************************************************************************/
 #pragma once
 
 #include "position.h"
 #include "uiDraw.h"
 
-class StarTest;
+class TestStar;
 
 class Star {
 private:
@@ -11,7 +19,7 @@ private:
    unsigned char phase;
 
 public:
-   friend StarTest;
+   friend TestStar;
    Star() : position(Position(generateRandomDouble(), generateRandomDouble())), phase(generateRandomPhase()) {}
 
    void twinkle() {phase++;}

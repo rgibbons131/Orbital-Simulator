@@ -24,6 +24,8 @@ class TestStarlink;
 class TestSputnik;
 class TestHubble;
 class TestGPS;
+class TestStar;
+
 /*********************************************
  * Position
  * A single position on the field in Meters  
@@ -39,6 +41,7 @@ public:
    friend TestSputnik;
    friend TestHubble;
    friend TestGPS;
+   friend TestStar;
    
    // constructors
    Position()            : x(0.0), y(0.0)  {}

@@ -19,6 +19,7 @@
 #include "testGPS.h"
 #include "testFragment.h"
 #include "testPart.h"
+#include "testStar.h"
 
  // This code, and the similar IF_DEF in testRunner(), is to ensure that
  // you can see the text output (called the console window) and OpenGL's
@@ -56,4 +57,5 @@ void testRunner()
    TestGPS().run();
    TestFragment().run();
    TestPart().run();
+   TestStar().run();
 }
