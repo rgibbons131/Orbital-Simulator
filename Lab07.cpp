@@ -1,14 +1,12 @@
 /*************************************************************
  * 1. Name:
- *      Demo
+ *      Orbital simulator
  * 2. Assignment Name:
- *      Lab 07: Orbit Simulator
+ *      Lab 13: Orbit Simulator
+ *  * Group Members:
+ *    Richard, Taemour, Aria
  * 3. Assignment Description:
  *      Simulate satellites orbiting the earth
- * 4. What was the hardest part? Be as specific as possible.
- *      ??
- * 5. How long did it take for you to complete the assignment?
- *      ??
  *****************************************************************/
 #pragma once
 #include <cassert>      // for ASSERT
