@@ -47,6 +47,7 @@ public:
       vector<Entity *> v;
       return v; 
    }
+   virtual void statusUpdate() {}
    virtual void draw(ogstream* pgout) {}
    virtual void move(const Interface* pUI);
    

@@ -31,7 +31,15 @@ public:
    {
       pgout->drawFragment(position, angle.getRadians());
    }
-   void move(const Interface* pUI);
+   void statusUpdate() 
+   {
+      angle.setRadians(angle.getRadians() + spin);
+      lifespan--;
+      if (lifespan <= 0)
+      {
+         dead = true;
+      }
+   }
 protected:
    int lifespan;
    double spin;
