@@ -10,9 +10,22 @@
 #include "satellite.h"
 #include "uiDraw.h"
 
+/**************************************************************************
+* Part Class
+* A part of a satelite. Each type of part differs only by its radius and
+* its draw function.
+**************************************************************************/
+class TestPart;
 class Part : public Satellite
 {
 public:
+   friend TestPart;
+   /**************************************************************************
+   * Part(const double& a, const double& radius, const Position& pos)
+   * The position to be passed is the position of the parrent, when you
+   * decide the angle of the part, it will automatically shift it that
+   * direction a set amount to prevent the parts from hitting. 
+   **************************************************************************/
    Part( const double& a, const double& radius, const Position& pos) : Satellite()
    { 
       int OFF = 20;

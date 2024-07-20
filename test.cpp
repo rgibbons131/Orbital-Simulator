@@ -18,6 +18,7 @@
 #include "testHubble.h"
 #include "testGPS.h"
 #include "testFragment.h"
+#include "testPart.h"
 
  // This code, and the similar IF_DEF in testRunner(), is to ensure that
  // you can see the text output (called the console window) and OpenGL's
@@ -44,7 +45,6 @@ void testRunner()
    errno_t err;
    err = freopen_s(&stream, "CONOUT$", "a", stdout);
 #endif // _WIN32
-   TestFragment().run();
    TestPosition().run();
    TestVelocity().run();
    TestDirection().run();
@@ -54,4 +54,6 @@ void testRunner()
    TestSputnik().run();
    TestHubble().run();
    TestGPS().run();
+   TestFragment().run();
+   TestPart().run();
 }
