@@ -27,6 +27,7 @@
 #include "hubble.h"
 #include "dreamChaser.h"
 #include "earth.h"
+#include "star.h"
 using namespace std;
 
 /*************************************************************************
@@ -169,7 +170,12 @@ public:
 
       entities.push_back(&dragon);
       
-      //phaseStar = 0;
+      //stars
+
+      for (int i = 0; i < 200; i++)
+      {
+         starVec.push_back(new Star());
+      }
 
       //Ship
       ptShip.setPixelsX(-450);
@@ -214,6 +220,8 @@ public:
    DreamChaser ship;
    Earth earth;
    vector<Entity *> entities;
+   Star* starList[200];
+   vector<Star*> starVec;
 
 
    unsigned char phaseStar;
@@ -246,6 +254,11 @@ void callBack(const Interface* pUI, void* p)
 
    //
    // perform all the game logic
+
+   //Twinkle Stars
+   for (int i = 0; i < pDemo->starVec.size(); i++) {
+      pDemo->starVec[i]->twinkle();
+   }
 
    // move all entities
    for (int i = 0; i < pDemo->entities.size(); i++)
@@ -309,37 +322,16 @@ void callBack(const Interface* pUI, void* p)
    ogstream gout(pt);
 
    // draw all Entities
+
+
    for (int i = 0; i < pDemo->entities.size(); i++)
    {
       pDemo->entities[i]->draw(&gout);
    }
 
-   // draw parts
-   //pt.setPixelsX(pDemo->ptCrewDragon.getPixelsX() + 20);
-   //pt.setPixelsY(pDemo->ptCrewDragon.getPixelsY() + 20);
-   //gout.drawCrewDragonRight(pt, pDemo->angleShip); // notice only two parameters are set
-   //pt.setPixelsX(pDemo->ptHubble.getPixelsX() + 20);
-   //pt.setPixelsY(pDemo->ptHubble.getPixelsY() + 20);
-   //gout.drawHubbleLeft(pt, pDemo->angleShip);      // notice only two parameters are set
-   //pt.setPixelsX(pDemo->ptGPS.getPixelsX() + 20);
-   //pt.setPixelsY(pDemo->ptGPS.getPixelsY() + 20);
-   //gout.drawGPSCenter(pt, pDemo->angleShip);       // notice only two parameters are set
-   //pt.setPixelsX(pDemo->ptStarlink.getPixelsX() + 20);
-   //pt.setPixelsY(pDemo->ptStarlink.getPixelsY() + 20);
-   //gout.drawStarlinkArray(pt, pDemo->angleShip);   // notice only two parameters are set
-
-   //// draw fragments
-   //pt.setPixelsX(pDemo->ptSputnik.getPixelsX() + 20);
-   //pt.setPixelsY(pDemo->ptSputnik.getPixelsY() + 20);
-   //gout.drawFragment(pt, pDemo->angleShip);
-   //pt.setPixelsX(pDemo->ptShip.getPixelsX() + 20);
-   //pt.setPixelsY(pDemo->ptShip.getPixelsY() + 20);
-   //gout.drawFragment(pt, pDemo->angleShip);
-
-   //// draw a single star
-   //gout.drawStar(pDemo->ptStar, pDemo->phaseStar);
-
-
+   for (int i = 0; i < pDemo->starVec.size(); i++) {
+      pDemo->starVec[i]->draw(&gout);
+   }
 }
 
 double Position::metersFromPixels = 40.0;
@@ -367,7 +359,7 @@ int main(int argc, char** argv)
    ptUpperRight.setPixelsX(1000.0);
    ptUpperRight.setPixelsY(1000.0);
    Interface ui(0, NULL,
-      "Demo",   /* name on the window */
+      "Simulator",   /* name on the window */
       ptUpperRight);
 
    // Initialize the demo
