@@ -31,7 +31,7 @@ public:
    {
       pgout->drawFragment(position, angle.getRadians());
    }
-   void statusUpdate() 
+   void statusUpdate(const Interface* pUI)
    {
       angle.setRadians(angle.getRadians() + spin);
       lifespan--;

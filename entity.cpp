@@ -30,7 +30,7 @@ Entity& Entity::operator=(const Entity& rhs)
 void Entity::move(const Interface* pUI)
 {
    float height = getHeightAboveEarth(position.getMetersX(), position.getMetersY());
-   statusUpdate(pUI);
+   this->statusUpdate(pUI);
 
    // Calculate gravitational acceleration
    float gravity = getGravity(height);

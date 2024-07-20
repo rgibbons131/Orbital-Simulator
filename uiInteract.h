@@ -76,7 +76,7 @@ public:
    static void *p;                   // for client
    static void (*callBack)(const Interface *, void *);
 
-private:
+protected:
    void initialize(int argc, char ** argv, const char * title, const Position & ptUpperRight);
 
    static bool         initialized;  // only run the constructor once!
@@ -129,3 +129,80 @@ void keyboardCallback(unsigned char key, int x, int y);
  * Set the game in action.  We will get control back in our drawCallback
  *************************************************************************/
 void run();
+
+class DummyInterface : public Interface
+{
+public:
+   DummyInterface() {}
+
+   // Constructor if you want to set up the window with anything but
+   // the default parameters
+   DummyInterface(int argc, char** argv, const char* title, const Position& ptUpperRight): Interface(argc,argv,title,ptUpperRight)
+   {
+      initialize(argc, argv, title, ptUpperRight);
+   }
+
+   // This will set the game in motion
+   void run(void (*callBack)(const DummyInterface*, void*), void* p) { assert(true); }
+
+   // Is it time to redraw the screen
+   bool isTimeToDraw(){ assert(true); }
+
+   // Set the next draw time based on current time and time period
+   void setNextDrawTime(){ assert(true); }
+
+   // Retrieve the next tick time... the time of the next draw.
+   unsigned long getNextTick() 
+   { 
+      assert(true);
+      return nextTick; 
+   }
+
+   // How many frames per second are we configured for?
+   void setFramesPerSecond(double value){ assert(true); }
+
+   // Key event indicating a key has been pressed or not.  The callbacks
+   // should be the only onces to call this
+   void keyEvent(int key, bool fDown){ assert(true); }
+   void keyEvent(){ assert(true); }
+
+   // Current frame rate
+   double frameRate() const 
+   { 
+      assert(true);
+      return timePeriod; 
+   }
+
+   // Get various key events
+   int  isDown()      const 
+   { 
+      assert(true);
+      return isDownPress; 
+   }
+   int  isUp()        const 
+   { 
+      assert(true);
+      return isUpPress;
+   }
+   int  isLeft()      const 
+{ 
+      assert(true); 
+      return isLeftPress; 
+   }
+   int  isRight()     const 
+{ 
+      assert(true); 
+      return isRightPress;
+   }
+   bool isSpace()     const 
+   { 
+      assert(true); 
+      return isSpacePress;
+   }
+
+   static void* p;                   // for client
+   static void (*callBack)(const DummyInterface*, void*);
+
+private:
+   void initialize(int argc, char** argv, const char* title, const Position& ptUpperRight) { assert(true); }
+};
